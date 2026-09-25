@@ -1,0 +1,8 @@
+{
+  "name": "intent",
+  "description": "Reviews how you brief the agent, and captures the agreed problem as a short intent.md.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Vikrant Jain"
+  }
+}
