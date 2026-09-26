@@ -8,9 +8,10 @@ lint, and no dependencies. `README.md` says what each skill does; `docs/design-n
 the author's record of the problem the plugin solves and why it is shaped this way. Read both
 before changing a skill.
 
-`evals/` holds a `claude plugin eval` suite, and `evals/README.md` says how to run it. After
-changing a skill, run `evals/histories/build.py`. Otherwise a mid-session case resumes with the
-old skill text, and still passes.
+`evals/` holds a `claude plugin eval` suite, and `evals/README.md` says how to run it. Judge a
+skill change by the suite, not by reading the text. A skill the agent partly ignores still loads
+and runs, and reads as correct. After a skill change, run `evals/histories/build.py` before the
+suite. Otherwise a mid-session case resumes with the old skill text, and still passes.
 
 ## Guidance stays at principle level
 

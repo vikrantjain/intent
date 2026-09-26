@@ -18,8 +18,9 @@ needs to reach the actual goal. It writes no files.
 
 **`capture`** produces or updates `intent.md`: the problem, why it matters, what success means,
 real constraints, what is out of scope, what is unresolved. About 400 words, same sections every
-time. It captures what and why, never how, so it stays readable in two minutes and later work
-can be checked against it. It will not change the problem or success of an existing `intent.md`
+time. It asks only what it needs for a draft, and puts the rest under Open questions. It
+captures what and why, never how, so it stays readable in two minutes and later work can be
+checked against it. It will not change the problem or success of an existing `intent.md`
 until you agree.
 
 Both are domain-agnostic. Nothing here assumes software. Tested on Opus and Sonnet at medium

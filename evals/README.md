@@ -27,13 +27,17 @@ Run it from the plugin root. Run it again with `--model opus` for the second tar
 
 - **`CLAUDE_CODE_EFFORT_LEVEL=medium`**: the target is Sonnet at medium effort and above. A case
   file cannot set effort, so it comes from the shell.
-- **`--judge-model sonnet`**: the default Haiku judge is too loose on criteria about tone and
-  framing.
+- **`--judge-model sonnet`**: the default judge is Haiku. The eval authoring guide recommends a
+  Sonnet-tier judge for criteria like these, and every recorded run used one.
 - **`--scaffold`**: two cases start from an existing `intent.md`, which their `scaffold.sh` writes.
 - **`--allow-tools Write Edit`**: capture writes `intent.md`.
 
 Cases that invoke a skill directly also run without the plugin, and the report gives the
 difference. Cases that resume a conversation run with the plugin only.
+
+A full run at 3 runs per case cost about $4 on Sonnet and $4 to $6 on Opus. Both models together
+have hit the account's usage limit mid-run, and runs past the limit fail with an error instead of
+a score. Run the two models at different times, or filter with `--case` or `--tag`.
 
 ## Histories
 
