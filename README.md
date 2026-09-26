@@ -28,6 +28,8 @@ effort.
 
 ## Install
 
+### From this repo
+
 This repo is its own plugin marketplace, so it installs with nothing set up on your side:
 
 ```
@@ -37,6 +39,25 @@ This repo is its own plugin marketplace, so it installs with nothing set up on y
 
 `intent@intent` is `<plugin>@<marketplace>`. You add the repo, which registers under the
 marketplace name `intent`, and it holds the plugin of the same name.
+
+### From your own marketplace
+
+If you keep a marketplace of your own, add this entry to the `plugins` list in its
+`.claude-plugin/marketplace.json`:
+
+```json
+{
+  "name": "intent",
+  "source": { "source": "github", "repo": "vikrantjain/intent" }
+}
+```
+
+Push the change, then refresh the marketplace and install from it:
+
+```
+/plugin marketplace update <your-marketplace>
+/plugin install intent@<your-marketplace>
+```
 
 ## Usage
 
