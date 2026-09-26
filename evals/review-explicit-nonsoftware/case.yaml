@@ -1,0 +1,29 @@
+schema_version: "1.0"
+name: review-explicit-nonsoftware
+description: Asked-for review of a solution-shaped brief outside software.
+tags: [review, explicit]
+execution:
+  prompt: "/intent:briefing-review Send a survey to all our members asking them to rate our events from 1 to 5, and have it out by next week."
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: names-the-pattern
+    criteria: >-
+      The response says in words that the brief hands over an approach (a 1-to-5 survey) without
+      saying what the user wants to find out or what decision the answers will feed. Asking
+      clarifying questions is not enough on its own. FAIL if the response only asks questions
+      without saying anything about how the request was briefed.
+  - type: llm
+    name: stays-in-the-domain
+    criteria: >-
+      The response treats this as a question about what the user's organisation wants to learn
+      from its members. Mentioning how a survey might be delivered, such as a form or an email, is
+      fine. FAIL only if the response turns the request into a technical problem about software,
+      databases or code.
+  - type: llm
+    name: no-verdict-on-the-plan
+    criteria: >-
+      The response does not draft the survey or its questions. It does not recommend for or
+      against the 1-to-5 survey. Mentioning other approaches, as examples of what a clearer goal
+      would let the agent consider, is fine.

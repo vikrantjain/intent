@@ -1,0 +1,23 @@
+schema_version: "1.0"
+name: capture-vague
+description: Capture on a request with no problem in it. It should ask a few questions and write nothing yet.
+tags: [capture]
+execution:
+  prompt: "/intent:capture We need to make onboarding better."
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill, Write, Edit]
+graders:
+  - type: llm
+    name: asks-a-few-questions
+    criteria: >-
+      The response asks between one and five questions aimed at the problem behind "make
+      onboarding better". Examples are who is being onboarded, what goes wrong for them now, and
+      how the user would tell that it had improved. It is not a long questionnaire.
+  - type: llm
+    name: no-critique
+    criteria: >-
+      The response does not comment on or criticise how the user phrased the request.
+  - type: file_exists
+    name: no-intent-written-yet
+    path: intent.md
+    exists: false

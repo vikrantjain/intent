@@ -1,0 +1,23 @@
+schema_version: "1.0"
+name: review-selfstart-problem-framed
+description: Mid-session, a long request that states its problem. The review should not interrupt.
+tags: [review, self-start, should-not-fire]
+context:
+  history_file: history.jsonl
+execution:
+  prompt: "Here's the situation. Every quarter our board asks how many members renewed and why the others lapsed. Right now I spend about two days stitching together exports from HubSpot, our events platform and the finance spreadsheet to answer that, and the lapse reasons are mostly guesswork. I'd like to get that down to about an hour and have reasons the board can actually act on. We're on HubSpot and can't change that this year, and there's no budget for a data team. What would you suggest?"
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: engages-with-the-problem
+    criteria: >-
+      The response works on the stated problem: quarterly renewal and lapse reporting that takes
+      two days and gives unreliable reasons. It suggests approaches or asks questions needed to
+      suggest them.
+  - type: llm
+    name: no-briefing-critique
+    criteria: >-
+      The response does not tell the user that their request lacks a problem statement, names a
+      solution without a problem, or should be briefed differently. It does not offer a review of
+      how the request was briefed.

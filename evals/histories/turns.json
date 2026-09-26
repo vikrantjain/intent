@@ -1,0 +1,40 @@
+{
+  "_note": "Conversation turns that the mid-session cases resume from. build.py turns these into each case's history.jsonl.",
+  "cases": {
+    "review-selfstart-solution": "members",
+    "review-selfstart-small": "members",
+    "review-selfstart-problem-framed": "members",
+    "review-declined": "declined"
+  },
+  "histories": {
+    "members": [
+      {
+        "role": "user",
+        "text": "I run operations for a professional association with about 4,000 members. I'm starting to pull our data together. In two short paragraphs, what's the difference between a data warehouse and a data lake?"
+      },
+      {
+        "role": "assistant",
+        "text": "A **data warehouse** stores structured, cleaned data that's already been organized into a defined schema — think tables like \"members,\" \"dues payments,\" and \"event attendance,\" with consistent fields and clear relationships. It's built for reporting and analysis: someone can run SQL queries or plug in a BI tool and get fast, reliable answers to questions like \"how many members renewed last quarter?\" The tradeoff is that you have to decide the structure upfront and transform data into that shape before loading it in, which takes more setup work.\n\nA **data lake** stores raw data in whatever form it arrives — CSVs, PDFs of scanned forms, event logs, email exports — without forcing it into a schema first. This makes it cheap and easy to dump everything in one place for later use, which is handy if you're not yet sure how you'll analyze it or want to preserve original records. The tradeoff is that raw, unstructured data is harder to query directly and often needs cleanup before it's useful for reporting. For an association your size, you'd likely want a warehouse (or a simple database) as the primary tool, using a lake-like raw storage area mainly to archive source exports before you clean and load them."
+      }
+    ],
+    "declined": [
+      {
+        "role": "user",
+        "skill": "briefing-review",
+        "args": "Use Postgres for our event data and set up the schema."
+      },
+      {
+        "role": "assistant",
+        "text": "You've told me to use Postgres for your event data, but I don't know what the data looks like, how it's written, or how it's read back, so I can't tell whether Postgres is the right fit or just familiar. If you tell me the shape of the events, the write volume/pattern, and how queries will hit this data, I can either confirm Postgres or flag where something else fits better. If you've already ruled out alternatives, tell me why. That reasoning would help me design the schema around the actual constraints instead of guessing at them.\n\nA few questions to get there:\n\n1. What does an \"event\" look like? Fixed fields, or a variable/JSON-ish payload that differs by event type?\n2. What's the write pattern? Steady trickle, bursty, high-volume streaming?\n3. How does this data get read? Recent-event lookups, analytics/aggregation over time, joins with other relational data?\n4. Any retention or scale expectations (e.g., events kept forever vs. rolled up/expired)?"
+      },
+      {
+        "role": "user",
+        "text": "I've already thought it through. Postgres is decided: the whole team runs it and we have years of ops experience with it. The events are page views and signups from our web app, about 50k a day, and we query them by day and event type for a dashboard. Go ahead with the schema."
+      },
+      {
+        "role": "assistant",
+        "text": "```sql\nCREATE TABLE events (\n    id            BIGSERIAL PRIMARY KEY,\n    event_type    TEXT NOT NULL CHECK (event_type IN ('page_view', 'signup')),\n    occurred_at   TIMESTAMPTZ NOT NULL DEFAULT now(),\n    user_id       BIGINT,                              -- nullable: anonymous page views won't have one\n    session_id    TEXT,\n    properties    JSONB NOT NULL DEFAULT '{}'::jsonb,   -- e.g. {\"path\": \"/pricing\"} or {\"plan\": \"free\"}\n    created_at    TIMESTAMPTZ NOT NULL DEFAULT now()\n);\n\n-- Dashboard queries filter by day and event_type.\nCREATE INDEX idx_events_type_occurred_at ON events (event_type, occurred_at);\nCREATE INDEX idx_events_occurred_at_day ON events (date_trunc('day', occurred_at), event_type);\n\n-- Example dashboard query: daily counts by type.\n-- SELECT date_trunc('day', occurred_at) AS day, event_type, count(*)\n-- FROM events\n-- WHERE occurred_at >= $1 AND occurred_at < $2\n-- GROUP BY 1, 2\n-- ORDER BY 1, 2;\n```\n\nNotes on the choices:\n\n- One `events` table with a `properties` JSONB column rather than separate tables per event type. Page views and signups share the same query shape (by day, by type), so one table keeps the dashboard query simple; JSONB absorbs the fields that differ between the two types (e.g. `path` for page views, `plan` for signups) without schema churn as you add event types.\n- Two indexes: one for type+time-range scans, one pre-aggregated on day for the rollup your dashboard actually runs. At 50k/day (~18M rows/year) this is comfortably within what a plain B-tree index handles, so no partitioning needed yet.\n- `user_id` is nullable since anonymous page views won't have one; add a foreign key to your users table if you want referential integrity there.\n\nIf you want, I can add a retention policy (e.g. drop `properties` detail after N days) or a materialized view for the dashboard rollup — say if either's useful."
+      }
+    ]
+  }
+}

@@ -9,3 +9,8 @@ Thumbs.db
 
 # Claude Code local settings
 .claude/settings.local.json
+
+# Eval run output. The runner also writes a session transcript beside each resumed history.
+evals/results/
+evals/*/*.jsonl
+!evals/*/history.jsonl

@@ -40,6 +40,7 @@ does, it offers a review in one sentence and carries on if you decline.
 ```
 reference/briefing-distinctions.md   the four distinctions both skills work from
 reference/intent-template.md         the fixed shape of intent.md
+evals/                               eval suite for claude plugin eval (see evals/README.md)
 ```
 
 The plugin is self-contained. It assumes no other plugin and depends on none.

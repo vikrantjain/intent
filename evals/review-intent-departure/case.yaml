@@ -1,0 +1,23 @@
+schema_version: "1.0"
+name: review-intent-departure
+description: Asked-for review of a request that departs from an existing intent.md. Needs --scaffold.
+tags: [review, explicit, intent-file]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: "/intent:briefing-review Let's run a social media campaign this spring to reach new donors."
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: departure-comes-first
+    criteria: >-
+      The response points out that the request departs from intent.md. intent.md is about getting
+      first-time donors to give a second time, and it lists attracting new donors as out of scope.
+      This request is about reaching new donors. The point about the departure comes before any
+      other feedback on how the request was briefed.
+  - type: llm
+    name: asks-whether-the-goal-changed
+    criteria: >-
+      The response asks the user whether their goal has changed, or whether this belongs to
+      separate work. It neither silently goes along with the new direction nor flatly refuses it.

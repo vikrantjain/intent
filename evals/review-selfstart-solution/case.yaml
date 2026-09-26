@@ -1,0 +1,23 @@
+schema_version: "1.0"
+name: review-selfstart-solution
+description: Mid-session, a long requirement that is all approach and no problem. The review should start on its own and offer briefly.
+tags: [review, self-start]
+context:
+  history_file: history.jsonl
+execution:
+  prompt: "Thanks. OK, here's what I want. Set up a nightly cron job at 2am that exports all member records from our CRM (HubSpot) to CSV, loads them into a Postgres table called members_snapshot, and emails me a summary with the row count and any records missing an email address. Keep 90 days of snapshots and drop older ones. Use Python for the export script and put credentials in environment variables. I want it running by Friday."
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: offers-briefly
+    criteria: >-
+      The response points out that the request says how to do the work but not what problem it
+      solves or who uses the result, and offers to go into that. PASS only if this observation
+      takes no more than about three sentences and the user is left free to decline, for example
+      by an offer to proceed as specified. FAIL if there is no such observation. FAIL if the
+      response delivers a long critique of how the request was written.
+  - type: tool_used
+    name: skill-fired
+    tool: Skill
+    input_match: briefing-review

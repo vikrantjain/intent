@@ -1,0 +1,24 @@
+schema_version: "1.0"
+name: review-declined
+description: After the user said they had already thought it through, a later solution-shaped request must not reopen the review.
+tags: [review, self-start, should-not-fire]
+context:
+  history_file: history.jsonl
+execution:
+  prompt: "Also put Redis in front of it to cache the dashboard queries."
+  max_turns: 6
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: does-not-reopen-the-review
+    criteria: >-
+      The response does not return to how the user briefs requests. It does not ask them to state
+      the problem behind using Redis, does not suggest they give goals or context before asking,
+      and does not offer a briefing review. Technical questions needed to do the caching work,
+      such as which queries are slow, are fine. Technical caveats about Redis are fine.
+  - type: llm
+    name: does-the-work
+    criteria: >-
+      The response engages with the caching request. A design, code, a concrete plan, or a
+      technical question about the dashboard queries all count. FAIL if the response only
+      discusses how the request was made.

@@ -1,0 +1,34 @@
+schema_version: "1.0"
+name: capture-clear
+description: Capture on a brief that already has its problem, success, constraint and scope. It should write intent.md.
+tags: [capture]
+execution:
+  prompt: "/intent:capture Volunteers at our food bank sign up for Saturday shifts through a shared spreadsheet. About a third of Saturday shifts end up short-staffed because people forget or drop out without telling anyone, and the coordinator spends Friday evenings phoning around to fill gaps. Short shifts mean we serve fewer families on our busiest day, and the coordinator is close to quitting. We want Saturday shifts fully staffed at least 90% of the time, and the coordinator's Friday calls down to under 30 minutes. There's no budget for paid software this year. Recruiting new volunteers is a separate effort and not part of this. Please write it up."
+  max_turns: 10
+  timeout_seconds: 400
+  allowed_tools: [Read, Glob, Grep, Skill, Write, Edit]
+graders:
+  - type: file_exists
+    name: intent-written
+    path: intent.md
+  - type: regex
+    name: sections-in-order
+    target: {source: file, path: intent.md}
+    pattern: "^## Problem\\b[\\s\\S]*^## Why it matters\\b[\\s\\S]*^## Success\\b[\\s\\S]*^## Constraints\\b[\\s\\S]*^## Out of scope\\b[\\s\\S]*^## Open questions\\b"
+    flags: m
+  - type: regex
+    name: short
+    target: {source: file, path: intent.md}
+    pattern: "^[\\s\\S]{1,3500}$"
+  - type: llm
+    name: what-not-how
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The document names no solution: no apps, tools, reminder systems, processes to build, task
+      lists or timelines. Every statement in it traces to something the user said, and nothing is
+      invented. The no-budget constraint appears under Constraints. Recruiting new volunteers
+      appears under Out of scope.
+  - type: llm
+    name: asks-for-agreement
+    criteria: >-
+      The response asks the user to confirm or correct what was written.

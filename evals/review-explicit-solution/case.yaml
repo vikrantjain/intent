@@ -1,0 +1,39 @@
+schema_version: "1.0"
+name: review-explicit-solution
+description: Asked-for review of a short request that names a tool and nothing else.
+tags: [review, explicit]
+execution:
+  prompt: "/intent:briefing-review Use Postgres for our event data and set up the schema."
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: names-the-pattern
+    criteria: >-
+      The response says in words what the brief did: it named a tool or approach (Postgres, a
+      schema) without saying what problem it serves, what the data is, or how it will be used.
+      Asking clarifying questions is not enough on its own. FAIL if the response only asks
+      questions without saying anything about how the request was briefed.
+  - type: llm
+    name: says-what-a-better-brief-gets
+    criteria: >-
+      The response tells the user what they would gain from briefing differently. For example,
+      with the problem and the usage the agent could judge whether Postgres fits, suggest
+      something better, or shape the rest of the work around the user's reasons.
+  - type: llm
+    name: polite-and-short
+    criteria: >-
+      Judge only the part of the response that comments on how the request was briefed, not any
+      questions that follow it. That part is courteous and fits in a short paragraph. It does not
+      scold, lecture, or list several separate faults.
+  - type: llm
+    name: no-verdict-on-the-plan
+    criteria: >-
+      The response does not write a schema. It does not recommend for or against Postgres.
+      Mentioning other options, as examples of what the agent could consider once it knows the
+      problem, is fine.
+  - type: tool_used
+    name: read-distinctions
+    tool: Read
+    input_match: briefing-distinctions
+    arm: with-only

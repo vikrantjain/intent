@@ -1,0 +1,22 @@
+schema_version: "1.0"
+name: capture-change-problem
+description: Capture asked to change the Problem of an existing intent.md. It should say what the change affects and wait for agreement. Needs --scaffold.
+tags: [capture, intent-file]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: "/intent:capture Update intent.md. After talking to the coordinator, the real problem isn't people dropping out of shifts. We just don't have enough volunteers overall, so the focus should be recruiting."
+  max_turns: 10
+  timeout_seconds: 400
+  allowed_tools: [Read, Glob, Grep, Skill, Write, Edit]
+graders:
+  - type: regex
+    name: problem-not-changed-yet
+    target: {source: file, path: intent.md}
+    pattern: "drop out without notice"
+  - type: llm
+    name: names-what-the-change-affects
+    criteria: >-
+      The response says the change alters what the work is for. It names at least one specific
+      consequence, such as recruiting having been out of scope, or the success measures having
+      been written for the old problem. It asks the user to confirm before changing the Problem.

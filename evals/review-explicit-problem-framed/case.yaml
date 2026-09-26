@@ -1,0 +1,21 @@
+schema_version: "1.0"
+name: review-explicit-problem-framed
+description: Asked-for review of a brief that already states its problem. It should find little to fault.
+tags: [review, explicit]
+execution:
+  prompt: "/intent:briefing-review Our support team spends about two hours a day tagging tickets by hand, and two agents often tag the same kind of ticket differently. That makes the weekly report on top complaint categories unreliable, and the product team plans from it. I want a weekly report the product team trusts, with tagging taking under 20 minutes a day. We're on Zendesk and can't switch this year. I'm open to any approach. What would you suggest?"
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: credits-the-brief
+    criteria: >-
+      The response acknowledges that the brief already states the problem, why it matters, a
+      measurable goal and a fixed constraint. It does not claim the user handed over a solution or
+      left out the problem.
+  - type: llm
+    name: no-invented-faults
+    criteria: >-
+      Every gap the response raises about the brief is genuinely absent from it. An example of a
+      real gap is how the product team's trust would be judged. The feedback on the briefing is
+      short and is not padded with criticism.
