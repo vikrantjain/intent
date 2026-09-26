@@ -30,12 +30,12 @@ def skill_body(name):
     return f"Base directory for this skill: {PLUGIN_ROOT}/skills/{name}\n\n{body}"
 
 
-def record(kind, message, parent, **extra):
+def record(kind, message, parent, index, **extra):
     return {
         "parentUuid": parent,
         "isSidechain": False,
         "type": kind,
-        "uuid": str(uuid.uuid4()),
+        "uuid": str(uuid.uuid5(uuid.NAMESPACE_URL, f"intent-evals/{index}")),
         "timestamp": TIMESTAMP,
         "userType": "external",
         "cwd": "/workspace",
@@ -59,7 +59,7 @@ def transcript(turns):
                 "stop_sequence": None,
                 "usage": {"input_tokens": 0, "output_tokens": 0},
             }
-            records.append(record("assistant", message, parent))
+            records.append(record("assistant", message, parent, len(records)))
         elif "skill" in turn:
             name = f"intent:{turn['skill']}"
             command = (
@@ -67,12 +67,12 @@ def transcript(turns):
                 f"<command-name>/{name}</command-name>\n"
                 f"<command-args>{turn['args']}</command-args>"
             )
-            records.append(record("user", {"role": "user", "content": command}, parent))
+            records.append(record("user", {"role": "user", "content": command}, parent, len(records)))
             parent = records[-1]["uuid"]
             meta = {"role": "user", "content": [{"type": "text", "text": skill_body(turn["skill"])}]}
-            records.append(record("user", meta, parent, isMeta=True))
+            records.append(record("user", meta, parent, len(records), isMeta=True))
         else:
-            records.append(record("user", {"role": "user", "content": turn["text"]}, parent))
+            records.append(record("user", {"role": "user", "content": turn["text"]}, parent, len(records)))
         parent = records[-1]["uuid"]
     return records
 

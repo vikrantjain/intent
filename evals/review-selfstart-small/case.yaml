@@ -10,11 +10,6 @@ execution:
   allowed_tools: [Read, Glob, Grep, Skill]
 graders:
   - type: llm
-    name: does-the-task
-    criteria: >-
-      The response is a single paragraph that explains the difference between a data warehouse
-      and a data lake.
-  - type: llm
     name: no-briefing-comment
     criteria: >-
       The response does not comment on how the user phrased or briefed the request, and does not

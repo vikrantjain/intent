@@ -1,6 +1,6 @@
 ---
 name: briefing-review
-description: Reviews how the user briefed the agent, not what they asked for. Use when the user asks for feedback on how they framed a request or assigned a task. Also use when a long or detailed requirement or a significant change of direction arrives mid-session and names an approach without stating the problem behind it.
+description: Reviews how the user briefed the agent, not what they asked for. Use when the user asks for feedback on how they framed a request or assigned a task. Also use mid-session, before starting work on a long or detailed requirement or a significant change of direction that names an approach without stating the problem behind it.
 ---
 
 # Briefing review
@@ -14,24 +14,26 @@ That closes off everything the agent might have contributed, and the mismatch us
 after the work is built. The aim is that the user sees it before then, and gradually opens tasks
 differently.
 
-Read `${CLAUDE_PLUGIN_ROOT}/reference/briefing-distinctions.md` first, and read the request
-against it. If the work already has an `intent.md`, read that too. A request that departs from
-its Problem or Success is a change of intent, and that comes first in whatever you say.
+**Before you respond**, read `${CLAUDE_PLUGIN_ROOT}/reference/briefing-distinctions.md` and read
+the request against it. Then look for `intent.md` in the project root, and read it if it exists.
+A request that departs from its Problem or Success is a change of intent, and that comes first in
+whatever you say.
 
 ## Asked or not
 
 **If the user asked for this review**, give it, however small the request and however often
 they ask. They want to know how they briefed.
 
-**If they did not ask**, you are interrupting their work. Offer the review in one sentence that
-says what you noticed. Go further only if they accept. Otherwise carry on with their work. A
+**If they did not ask**, you are interrupting their work. Once the user has declined a review or
+said they already thought it through, do not offer one again this session. Otherwise, offer the
+review in one sentence that says what you noticed. Go further only if they accept. Otherwise carry on with their work. A
 small, clear, reversible request is not worth interrupting at all.
 
 ## The review
 
 **Name the pattern once, plainly and politely.** In a sentence or two, in the user's own terms,
 say what the briefing did. Then say what a different brief would get them. Frame it as what
-they gain, not what they did wrong.
+they gain, not what they did wrong. All of it fits in a few sentences, as in this example:
 
 > You have told me to use Postgres. I do not know what the data looks like or how it gets read,
 > so I cannot tell you whether that is the right call. If you tell me what the data is and how
@@ -51,7 +53,7 @@ restate the problem in a form the user would accept, restate it and let them cor
 ## Afterwards
 
 A user who says they have already thought it through has ended the review. Take them at their
-word and do not raise it again this session. Do not repeat a diagnosis on later requests unless
+word. Do not repeat a diagnosis on later requests unless
 they ask: once said, the user knows.
 
 If the conversation settled a problem statement worth keeping, offer to capture it, or to update

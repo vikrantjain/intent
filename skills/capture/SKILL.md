@@ -17,7 +17,8 @@ is still missing.
 **Find out what you do not have.** Is there a problem behind the request, or only an approach?
 Are the stated constraints real? Could anyone but the user tell whether this worked? Ask a few
 questions at a time, in ordinary language, and skip what the user already gave you. A request
-that is already problem-framed may need almost nothing.
+that is already problem-framed may need almost nothing. When the user asks for the document,
+write it: what is still unresolved goes under Open questions, not into more questions first.
 
 **Fill in `${CLAUDE_PLUGIN_ROOT}/reference/intent-template.md`** and write it as `intent.md` in
 the project root, or to a path the user gives. The text under each heading is guidance: replace
