@@ -26,6 +26,25 @@ until you agree.
 Both are domain-agnostic. Nothing here assumes software. Tested on Opus and Sonnet at medium
 effort.
 
+## Install
+
+This repo is its own plugin marketplace, so it installs with nothing set up on your side:
+
+```
+/plugin marketplace add vikrantjain/intent
+/plugin install intent@intent
+```
+
+`intent@intent` is `<plugin>@<marketplace>`. You add the repo, which registers under the
+marketplace name `intent`, and it holds the plugin of the same name.
+
+If you already have the `my-claude-plugins` marketplace added, install from there instead:
+
+```
+/plugin marketplace update my-claude-plugins
+/plugin install intent@my-claude-plugins
+```
+
 ## Usage
 
 ```

@@ -1,8 +1,12 @@
 {
   "name": "intent",
-  "description": "Reviews how you brief the agent, and captures the agreed problem as a short intent.md.",
   "version": "0.1.0",
+  "description": "Reviews how you brief the agent, and captures the agreed problem as a short intent.md.",
   "author": {
     "name": "Vikrant Jain"
-  }
+  },
+  "homepage": "https://github.com/vikrantjain/intent",
+  "repository": "https://github.com/vikrantjain/intent",
+  "license": "MIT",
+  "keywords": ["intent", "briefing", "problem-statement", "requirements", "collaboration", "prompting"]
 }

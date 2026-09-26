@@ -1,0 +1,16 @@
+{
+  "name": "intent",
+  "owner": {
+    "name": "Vikrant Jain"
+  },
+  "metadata": {
+    "description": "Self-hosted marketplace for the intent plugin."
+  },
+  "plugins": [
+    {
+      "name": "intent",
+      "source": "./",
+      "description": "Reviews how you brief the agent, and captures the agreed problem as a short intent.md."
+    }
+  ]
+}
