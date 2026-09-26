@@ -38,13 +38,6 @@ This repo is its own plugin marketplace, so it installs with nothing set up on y
 `intent@intent` is `<plugin>@<marketplace>`. You add the repo, which registers under the
 marketplace name `intent`, and it holds the plugin of the same name.
 
-If you already have the `my-claude-plugins` marketplace added, install from there instead:
-
-```
-/plugin marketplace update my-claude-plugins
-/plugin install intent@my-claude-plugins
-```
-
 ## Usage
 
 ```
