@@ -9,10 +9,10 @@ Cases for `claude plugin eval`. Each case directory holds a `case.yaml`. Some al
 names what the brief did and what a different brief would get. They also check that it does not
 judge the plan, and that it does not invent faults in a brief that is already problem-framed.
 
-`review-selfstart-*` and `review-declined` resume a conversation already under way. They check that
-the review starts on its own for a long solution-shaped requirement, and that it only offers. They
-also check that it stays quiet for a small request, for a long request that states its problem,
-and after the user has said they already thought it through.
+`review-quiet-*` and `review-declined` resume a conversation already under way, and never ask for
+a review. They check that the review stays quiet for a small request, and for a long request that
+states its problem. They also check that it stays quiet after the user has said they already
+thought it through.
 
 `capture-*` check that capture asks before writing when there is nothing to write, and that it
 writes the fixed sections with no solution in them. They also check that it will not change the

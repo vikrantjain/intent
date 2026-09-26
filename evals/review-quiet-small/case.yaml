@@ -1,7 +1,7 @@
 schema_version: "1.0"
-name: review-selfstart-small
-description: Mid-session, a small clear request. The review should not start.
-tags: [review, self-start, should-not-fire]
+name: review-quiet-small
+description: Mid-session, a small clear request. The review is not asked for and should not start.
+tags: [review, mid-session, should-not-fire]
 context:
   history_file: history.jsonl
 execution:

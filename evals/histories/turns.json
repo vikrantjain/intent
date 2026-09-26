@@ -1,9 +1,8 @@
 {
   "_note": "Conversation turns that the mid-session cases resume from. build.py turns these into each case's history.jsonl.",
   "cases": {
-    "review-selfstart-solution": "members",
-    "review-selfstart-small": "members",
-    "review-selfstart-problem-framed": "members",
+    "review-quiet-small": "members",
+    "review-quiet-problem-framed": "members",
     "review-declined": "declined"
   },
   "histories": {

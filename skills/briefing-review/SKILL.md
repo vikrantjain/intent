@@ -1,6 +1,6 @@
 ---
 name: briefing-review
-description: Reviews how the user briefed the agent, not what they asked for. Use when the user asks for feedback on how they framed a request or assigned a task. Also use mid-session, before starting work on a long or detailed requirement or a significant change of direction that names an approach without stating the problem behind it.
+description: Reviews how the user briefed the agent, not what they asked for. Use when the user asks for feedback on how they framed a request or assigned a task.
 ---
 
 # Briefing review
@@ -19,15 +19,8 @@ the request against it. Then look for `intent.md` in the project root, and read 
 A request that departs from its Problem or Success is a change of intent, and that comes first in
 whatever you say.
 
-## Asked or not
-
-**If the user asked for this review**, give it, however small the request and however often
-they ask. They want to know how they briefed.
-
-**If they did not ask**, you are interrupting their work. Once the user has declined a review or
-said they already thought it through, do not offer one again this session. Otherwise, offer the
-review in one sentence that says what you noticed. Go further only if they accept. Otherwise carry on with their work. A
-small, clear, reversible request is not worth interrupting at all.
+The user asked for this review, so give it, however small the request and however often they
+ask. They want to know how they briefed.
 
 ## The review
 
@@ -53,7 +46,7 @@ restate the problem in a form the user would accept, restate it and let them cor
 ## Afterwards
 
 A user who says they have already thought it through has ended the review. Take them at their
-word. Do not repeat a diagnosis on later requests unless
+word, and do not raise it again this session. Do not repeat a diagnosis on later requests unless
 they ask: once said, the user knows.
 
 If the conversation settled a problem statement worth keeping, offer to capture it, or to update

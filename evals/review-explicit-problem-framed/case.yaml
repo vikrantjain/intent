@@ -14,8 +14,8 @@ graders:
       measurable goal and a fixed constraint. It does not claim the user handed over a solution or
       left out the problem.
   - type: llm
-    name: no-invented-faults
+    name: gaps-are-real
     criteria: >-
-      Every gap the response raises about the brief is genuinely absent from it. An example of a
-      real gap is how the product team's trust would be judged. The feedback on the briefing is
-      short and is not padded with criticism.
+      Every gap the response says the brief has is genuinely absent from the brief. An example of
+      a real gap is how the product team's trust would be judged. Questions that only confirm
+      something the brief stated do not count as claimed gaps.

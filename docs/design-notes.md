@@ -37,13 +37,10 @@ Anyone briefing an AI agent on non-trivial work, in any domain: software, writin
 
 ## Decisions
 - Review and capture are separate skills. They share a set of distinctions, and neither invokes the other.
-- Review runs when the user asks for it. It may also start on its own when a long requirement arrives mid-session or the user changes direction significantly. When it starts on its own, it offers a review in one sentence and carries on if the user declines.
+- Review runs only when the user asks for it. Starting on its own, with a one-sentence offer, was tried and dropped. In evals it triggered in none of 11 runs across Sonnet and Opus. Given a long requirement and write access, the agent built what was asked. Its description no longer claims it.
 - When an agreed `intent.md` exists, review reads the request against it. A request that departs from its Problem or Success is a change of intent, and review says so first.
 - Capture changes the Problem or Success of an existing `intent.md` only after saying what the change affects and getting the user's agreement.
 - `intent.md` has six sections, set in `reference/intent-template.md`. This document's "Who it is for" folds into Problem. Its "What the plugin provides" is left out because it describes a solution.
 - Capture skips questions the request already answers.
 - `intent.md` is written to the project root, or to a path the user gives.
 - Clarifying questions are asked a few at a time.
-
-## Open questions
-- Should review also start on its own when the first message of a session is a long or solution-shaped requirement? The trigger says "mid-session", which excludes it.

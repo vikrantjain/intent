@@ -1,7 +1,7 @@
 schema_version: "1.0"
-name: review-selfstart-problem-framed
-description: Mid-session, a long request that states its problem. The review should not interrupt.
-tags: [review, self-start, should-not-fire]
+name: review-quiet-problem-framed
+description: Mid-session, a long request that states its problem. The review is not asked for and should not interrupt.
+tags: [review, mid-session, should-not-fire]
 context:
   history_file: history.jsonl
 execution:

@@ -1,7 +1,7 @@
 schema_version: "1.0"
 name: review-declined
 description: After the user said they had already thought it through, a later solution-shaped request must not reopen the review.
-tags: [review, self-start, should-not-fire]
+tags: [review, mid-session, should-not-fire]
 context:
   history_file: history.jsonl
 execution:

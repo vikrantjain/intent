@@ -22,7 +22,8 @@ time. It captures what and why, never how, so it stays readable in two minutes a
 can be checked against it. It will not change the problem or success of an existing `intent.md`
 until you agree.
 
-Both are domain-agnostic. Nothing here assumes software.
+Both are domain-agnostic. Nothing here assumes software. Tested on Opus and Sonnet at medium
+effort.
 
 ## Usage
 
@@ -31,9 +32,8 @@ Both are domain-agnostic. Nothing here assumes software.
 /intent:capture
 ```
 
-`briefing-review` may also start on its own when a long requirement arrives mid-session, or when
-you change direction significantly and name an approach without stating the problem. When it
-does, it offers a review in one sentence and carries on if you decline.
+`briefing-review` runs when you ask for it. It does not start on its own: in evals it never
+triggered unasked.
 
 ## Layout
 

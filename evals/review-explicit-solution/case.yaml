@@ -21,12 +21,6 @@ graders:
       with the problem and the usage the agent could judge whether Postgres fits, suggest
       something better, or shape the rest of the work around the user's reasons.
   - type: llm
-    name: polite-and-short
-    criteria: >-
-      Judge only the part of the response that comments on how the request was briefed, not any
-      questions that follow it. That part is courteous and fits in a short paragraph. It does not
-      scold, lecture, or list several separate faults.
-  - type: llm
     name: no-verdict-on-the-plan
     criteria: >-
       The response does not write a schema. It does not recommend for or against Postgres.
