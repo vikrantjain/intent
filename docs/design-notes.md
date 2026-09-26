@@ -42,5 +42,5 @@ Anyone briefing an AI agent on non-trivial work, in any domain: software, writin
 - Capture changes the Problem or Success of an existing `intent.md` only after saying what the change affects and getting the user's agreement.
 - `intent.md` has six sections, set in `reference/intent-template.md`. This document's "Who it is for" folds into Problem. Its "What the plugin provides" is left out because it describes a solution.
 - Capture skips questions the request already answers.
-- `intent.md` is written to the project root, or to a path the user gives.
+- `intent.md` is written to the project root, or to a path the user gives. Review looks for it in the same two places.
 - Clarifying questions are asked a few at a time.

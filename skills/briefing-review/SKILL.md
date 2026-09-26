@@ -15,9 +15,9 @@ after the work is built. The aim is that the user sees it before then, and gradu
 differently.
 
 **Before you respond**, read `${CLAUDE_PLUGIN_ROOT}/reference/briefing-distinctions.md` and read
-the request against it. Then look for `intent.md` in the project root, and read it if it exists.
-A request that departs from its Problem or Success is a change of intent, and that comes first in
-whatever you say.
+the request against it. Then look for `intent.md` in the project root, or at the location the
+user specified for it, and read it if it exists. A request that departs from its Problem or
+Success is a change of intent, and that comes first in whatever you say.
 
 The user asked for this review, so give it, however small the request and however often they
 ask. They want to know how they briefed.
