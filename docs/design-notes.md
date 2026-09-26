@@ -10,7 +10,7 @@ Users brief the agent as a collaborator: they state the problem, the context and
 Anyone briefing an AI agent on non-trivial work, in any domain: software, writing, research, operations, events, learning. It is not specific to developers.
 
 ## What the plugin provides
-1. **Requirement review.** Its subject is the briefing, not the request's content. It reads how the user handed the work over: whether a problem was stated or only an approach, whether the constraints are real or preferences presented as given, whether success is defined, whether any room was left for the agent to propose something different. It names what it finds, says what a better brief would have given them, and asks what is needed to reach the underlying goal.
+1. **Briefing review.** Its subject is the briefing, not the request's content. It reads how the user handed the work over: whether a problem was stated or only an approach, whether the constraints are real or preferences presented as given, whether success is defined, whether any room was left for the agent to propose something different. It names what it finds, says what a better brief would have given them, and asks what is needed to reach the underlying goal.
 2. **Intent capture.** Its subject is the problem. It asks what it needs, then writes or updates a single `intent.md`.
 
 ## Success looks like

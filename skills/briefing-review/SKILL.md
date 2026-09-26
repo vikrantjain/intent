@@ -1,9 +1,9 @@
 ---
-name: requirement-review
+name: briefing-review
 description: Reviews how the user briefed the agent, not what they asked for. Use when the user asks whether their request was well framed, asks for feedback on how they assigned a task, or invokes review by name. Also use when a long or detailed requirement arrives mid-session, or when the user changes direction significantly, and the request names an approach without stating the problem behind it.
 ---
 
-# Requirement review
+# Briefing review
 
 The subject of this review is **the briefing, not the request**. You are not judging whether the
 plan is good. You are reading how the work was handed over, and telling the user what their way

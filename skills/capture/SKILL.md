@@ -1,5 +1,5 @@
 ---
-name: intent-capture
+name: capture
 description: Creates or updates intent.md, a short statement of the problem being solved, why it matters and what success means. Use when the user wants to capture the intent behind a piece of work before starting it, asks for an intent document, or agrees to record a problem statement that a conversation has settled.
 ---
 
