@@ -17,4 +17,4 @@ own decision belongs here only when they have called it fixed.
 What this deliberately does not cover, where a reader would otherwise assume it does.
 
 ## Open questions
-What is unresolved and who resolves it. Delete the section when there is nothing.
+What is unresolved and who resolves it. Write "None." when nothing is.

@@ -21,14 +21,22 @@ request, or only an approach; are the stated constraints real; would anyone but 
 to tell whether this worked. Ask a few questions at a time, in ordinary language. Skip whatever
 the user has already given you. A request that is already problem-framed may need almost nothing.
 
-**Write `${CLAUDE_PLUGIN_ROOT}/reference/intent-template.md`** to the project root as `intent.md`,
-or to a path the user gives. Keep the sections exactly as the template has them, in that order.
-If one is genuinely empty, say so in a line rather than inventing content.
+**Fill in `${CLAUDE_PLUGIN_ROOT}/reference/intent-template.md`** and write it to the project root
+as `intent.md`, or to a path the user gives. The text under each heading in the template says
+what belongs there. It is guidance, not content, so replace it. Keep the sections exactly as the
+template has them, in that order. If one is genuinely empty, write "None." rather than inventing
+content.
 
 **Show it and confirm it.** The user agreeing is the point of the document. Nothing downstream
 can be checked against a statement they never accepted.
 
+## Updating
+
 When an `intent.md` already exists, read it, confirm it is the right one, and update it in place.
+
+A change to its Problem or its Success changes what the work is for. Anything already checked
+against the old version is affected. Say so before you make that change, and make it only once
+the user agrees. The other sections change as the conversation settles them.
 
 ## What this document is
 

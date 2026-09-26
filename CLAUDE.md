@@ -25,8 +25,8 @@ this repo, and do not make a skill here depend on one. They may later be tuned t
 ## Shared reference files
 
 Both `skills/*/SKILL.md` load `reference/` files by `${CLAUDE_PLUGIN_ROOT}` path. A renamed or
-moved file breaks nothing visibly — the skill loads and the agent simply never reads the
-distinctions — so grep for the path before moving one.
+moved file breaks nothing visibly. The skill still loads, and the agent simply never reads the
+distinctions. Grep for the path before moving one.
 
 `reference/intent-template.md` is the fixed shape of the `intent.md` the plugin produces.
 Changing its sections changes the format other work is meant to check against.

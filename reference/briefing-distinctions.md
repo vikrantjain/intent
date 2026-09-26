@@ -4,8 +4,8 @@ Four distinctions carry the work. Everything else is judgment.
 
 ## Problem vs. solution
 
-A problem says what is wrong now and for whom. A solution says what to build. "Add a cron job"
-is a solution. "Reports have to be on the desk before 9am and nobody is awake to run them" is a
+A problem says what is wrong now and for whom. A solution says what to do. "Run a survey of our
+members" is a solution. "Members are leaving in their first year and nobody knows why" is a
 problem.
 
 A request can name a solution and still be fine. What matters is whether the problem behind it
@@ -41,5 +41,5 @@ A brief either invites the agent's judgment or forecloses it. Foreclosure is not
 sometimes the user has decided, and execution is what they want. It goes wrong when it is
 accidental, when the user would have welcomed a better approach and never signalled it.
 
-Read what the request permits. If following it exactly leaves no point at which the agent could
-have proposed something different, that is worth saying out loud.
+Read what the request permits. The test is whether following it exactly leaves any point at
+which the agent could propose something different.
