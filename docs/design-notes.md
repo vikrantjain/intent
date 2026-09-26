@@ -1,4 +1,4 @@
-# Intent: Intent Plugin
+# Design notes: Intent Plugin
 
 ## Problem
 Many people treat an AI agent as an executor that follows orders rather than as a peer to think with. They decide the approach themselves and hand over directions, leaving no room for the agent's knowledge to suggest a better one. The visible symptom is a requirement that is really a solution ("add a cron job", "use Postgres", "build an agent to talk to project X over A2A") for a problem that was never stated. The agent builds what it was told. The result misses the real need, and the mismatch is usually found late.
