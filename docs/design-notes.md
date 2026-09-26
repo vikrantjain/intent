@@ -26,6 +26,7 @@ Anyone briefing an AI agent on non-trivial work, in any domain: software, writin
 - **It is domain-agnostic.** Questions and wording must work equally well outside software.
 - **The format is stable and documented.** Other work will read `intent.md`, so its structure must not drift.
 - **The guidance stays at principle level.** The skills give the agent the distinctions that matter and the judgment to apply them. They do not enumerate scenarios or prescribe responses per situation, which would leave the agent stuck on anything unlisted.
+- **The skills stay small without losing effect.** A skill's text loads into context each time it runs, and its description loads in every session. Repetition and restatement are cut. Anything that changes what the agent does stays.
 - **Review names the pattern once, politely.** It states what the briefing did and what would work better, without building a case. A user who says they have already thought it through proceeds unchallenged.
 - **Capture does not coach.** Its questions are woven into the conversation, never framed as a critique of the request.
 - **The plugin is self-contained.** It assumes no other plugin and depends on none.

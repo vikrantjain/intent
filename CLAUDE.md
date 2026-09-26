@@ -16,6 +16,13 @@ default failure here, and it fails silently: the skill still runs, but the agent
 an unlisted case to the nearest listed one and gets it wrong. Full rationale is under Constraints
 in `docs/design-notes.md`.
 
+## Skills stay small
+
+A skill's text and the `reference/` files it reads load into context every time it runs, and its
+`description` loads in every session. Add a line only if it changes what the agent does. Cut
+repetition and restatement, but never an instruction, a criterion or a calibrating example: the
+skill would still run and simply work worse.
+
 ## The plugin is self-contained
 
 Sibling directories under `../` are unrelated plugins. Do not reference them from anything in

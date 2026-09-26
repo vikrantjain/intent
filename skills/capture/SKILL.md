@@ -1,54 +1,41 @@
 ---
 name: capture
-description: Creates or updates intent.md, a short statement of the problem being solved, why it matters and what success means. Use when the user wants to capture the intent behind a piece of work before starting it, asks for an intent document, or agrees to record a problem statement that a conversation has settled.
+description: Creates or updates intent.md, a short statement of the problem being solved, why it matters and what success means. Use when the user wants the intent behind a piece of work written down before starting it, or agrees to record a problem statement the conversation has settled.
 ---
 
 # Intent capture
 
-The subject here is **the problem**, not the user. You are getting to a statement of what is
-being solved and why, and writing it down.
+The subject is **the problem**, not the user. Get to a statement of what is being solved and why,
+and write it down. This is not a review. Ask your questions as part of the conversation, and
+never critique how the user asked.
 
-This is not a review. Do not tell the user how they should have asked. Questions belong in the
-conversation, not framed as a critique of the request.
-
-Read `${CLAUDE_PLUGIN_ROOT}/reference/briefing-distinctions.md`. It holds the distinctions that
-tell you what is still missing. Use them silently.
+Read `${CLAUDE_PLUGIN_ROOT}/reference/briefing-distinctions.md` and use it silently to see what
+is still missing.
 
 ## What to do
 
-**Find out what you do not have.** Work from the distinctions: is there a problem behind the
-request, or only an approach; are the stated constraints real; would anyone but the user be able
-to tell whether this worked. Ask a few questions at a time, in ordinary language. Skip whatever
-the user has already given you. A request that is already problem-framed may need almost nothing.
+**Find out what you do not have.** Is there a problem behind the request, or only an approach?
+Are the stated constraints real? Could anyone but the user tell whether this worked? Ask a few
+questions at a time, in ordinary language, and skip what the user already gave you. A request
+that is already problem-framed may need almost nothing.
 
-**Fill in `${CLAUDE_PLUGIN_ROOT}/reference/intent-template.md`** and write it to the project root
-as `intent.md`, or to a path the user gives. The text under each heading in the template says
-what belongs there. It is guidance, not content, so replace it. Keep the sections exactly as the
-template has them, in that order. If one is genuinely empty, write "None." rather than inventing
-content.
+**Fill in `${CLAUDE_PLUGIN_ROOT}/reference/intent-template.md`** and write it as `intent.md` in
+the project root, or to a path the user gives. The text under each heading is guidance: replace
+it. Keep every section exactly as named, in order. Write "None." in an empty one rather than
+inventing content.
 
-**Show it and confirm it.** The user agreeing is the point of the document. Nothing downstream
-can be checked against a statement they never accepted.
+**Show it and get the user's agreement.** Nothing downstream can be checked against a statement
+they never accepted.
 
-## Updating
-
-When an `intent.md` already exists, read it, confirm it is the right one, and update it in place.
-
-A change to its Problem or its Success changes what the work is for. Anything already checked
-against the old version is affected. Say so before you make that change, and make it only once
-the user agrees. The other sections change as the conversation settles them.
+**If an `intent.md` already exists**, confirm it is the right one and update it in place.
+Changing its Problem or Success changes what the work is for, and affects anything already
+checked against the old version. Say so, and make that change only once the user agrees.
 
 ## What this document is
 
-About 400 words. One page. It is read before work starts and checked against afterwards, which
-only works if it stays short enough to read in two minutes.
+About 400 words, readable in two minutes. It is read before work starts and checked against
+afterwards, which only works while it stays that short.
 
-It holds **what and why, never how.** No architecture, no task list, no timeline, no tools.
-The exception is a constraint the user has called fixed, which belongs under Constraints as a
-constraint, not as a decision.
-
-It is not a spec and not a plan. The pressure to grow it will come from the user, and from you.
-Resist it. Anything that does not fit in the template is something the next document handles.
-
-Nothing here is software-specific. The same document works for research, writing, operations
-or an event.
+It holds **what and why, never how**: no architecture, task list, timeline or tools, except a
+constraint the user has called fixed. It is not a spec or a plan. The pressure to grow it will
+come from the user, and from you. Resist it. Whatever does not fit belongs in the next document.
