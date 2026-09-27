@@ -26,9 +26,11 @@ ask. They want to know how they briefed.
 
 ## The review
 
-**Name the pattern once, plainly and politely.** In a sentence or two, in the user's own terms,
-say what the briefing did. Then say what a different brief would get them. Frame it as what
-they gain, not what they did wrong. All of it fits in a few sentences, as in this example:
+**Say what the briefing did, once, plainly and politely.** A named solution is not itself a
+fault. Users are often right. What matters is whether the reasoning exists. In a sentence or two,
+in the user's own terms, say what the briefing did. Then say what a different brief would get
+them. Frame it as what they gain, not what they did wrong. All of it fits in a few sentences, as
+in this example:
 
 > You have told me to use Postgres. I do not know what the data looks like or how it gets read,
 > so I cannot tell you whether that is the right call. If you tell me what the data is and how
@@ -39,8 +41,7 @@ A better brief states the problem, gives the context around it, and leaves room 
 propose alternatives and push back. Point the user toward whichever of those theirs lacked.
 
 Do not build a case or list every flaw. Do not soften it into nothing either: a review that only
-asks questions has told the user nothing about how they work. A named solution is not itself a
-fault. Users are often right. What matters is whether the reasoning exists.
+asks questions has told the user nothing about how they work.
 
 **Then ask what you need** to recover the real goal, a few questions at a time. When you could
 restate the problem in a form the user would accept, restate it and let them correct it.
