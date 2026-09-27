@@ -1,0 +1,43 @@
+schema_version: "1.0"
+name: review-explicit-agents-mandate
+description: Asked-for review of a product requirement that mandates a technology. Its only reasons are competitors and speed, and it names no use case.
+tags: [review, explicit]
+execution:
+  prompt: "/intent:briefing-review Write a requirements doc for the dev team. We're a finance company and we need to ship solutions to market fast, so every department should have its own AI agent. Our competitors are building AI agents. Our agents will talk to other agents inside and outside the company over the A2A protocol, to get answers to all kinds of problems very quickly."
+  max_turns: 10
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: names-the-pattern
+    criteria: >-
+      The brief was a finance company's request for a requirements doc: an AI agent per
+      department, talking to agents inside and outside the company over A2A, because competitors
+      are building agents and to get answers quickly. The response says in words that the brief
+      names a solution without a use case: it does not say what problem the agents solve, for
+      whom, or what goes wrong today. Asking clarifying questions is not enough on its own. FAIL
+      if the response only asks questions without saying anything about how the request was
+      briefed.
+  - type: llm
+    name: weighs-the-stated-reason
+    criteria: >-
+      The brief's reasons were that competitors are building AI agents and that answers should
+      come quickly. The response treats these as reasons to act, not as the problem the agents
+      would solve. FAIL if it accepts them as enough and moves on to the design. FAIL also if it
+      dismisses competitive pressure as an invalid reason.
+  - type: llm
+    name: says-what-a-better-brief-gets
+    criteria: >-
+      The response tells the user what they would gain from briefing differently. For example,
+      with a named use case the design could be checked against something, the team could tell
+      whether agents are the right answer, or there would be a way to tell whether it worked.
+  - type: llm
+    name: no-verdict-on-the-plan
+    criteria: >-
+      The response does not write the requirements doc. It does not recommend for or against
+      department agents or A2A. It does not deliver a verdict that the plan is unsafe or
+      non-compliant. Asking about regulatory or data constraints as questions is fine.
+  - type: tool_used
+    name: read-distinctions
+    tool: Read
+    input_match: briefing-distinctions
+    arm: with-only

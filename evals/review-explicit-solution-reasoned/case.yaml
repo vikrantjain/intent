@@ -1,0 +1,40 @@
+schema_version: "1.0"
+name: review-explicit-solution-reasoned
+description: Asked-for review of a brief that names a solution and states the problem, success, a sourced constraint and why it chose this approach. The review should credit the reasoning.
+tags: [review, explicit]
+execution:
+  prompt: "/intent:briefing-review Add a nightly job that emails the on-call engineer a list of the previous day's failed payments. Right now failures only surface when customers complain, usually two or three days later, and by then refunds are messy. We want every failed payment in front of an engineer within a day, before the customer notices. We're under contract with our payment provider until 2028, so it stays. I considered real-time alerts, but these failures can wait until morning and I don't want them paging anyone at night."
+  max_turns: 10
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: credits-the-reasoning
+    criteria: >-
+      The brief asked for a nightly job that emails the on-call engineer a list of the previous
+      day's failed payments. It said why: failures surface only when customers complain two or
+      three days later, and by then refunds are messy. It set success as every failed payment in
+      front of an engineer within a day. It said the payment provider stays because of a contract
+      until 2028. It said real-time alerts were considered and rejected because the failures can
+      wait until morning and should not page anyone at night. The response acknowledges that the
+      brief states the problem and the reasoning behind the approach. It does not claim the user
+      handed over a solution without a reason.
+  - type: llm
+    name: gaps-are-real
+    criteria: >-
+      The brief said failures surface only when customers complain two or three days later, that
+      refunds are messy by then, that every failed payment should reach an engineer within a day,
+      that a contract keeps the payment provider until 2028, and that real-time alerts were
+      rejected because the failures can wait until morning and should not page anyone at night.
+      Every gap the response says the brief has is genuinely absent from it. Examples of real
+      gaps are what counts as a failed payment, or what the engineer should do with each one.
+      Questions that only confirm something the brief stated do not count as claimed gaps.
+  - type: llm
+    name: no-verdict-on-the-plan
+    criteria: >-
+      The response does not write the job. It does not recommend for or against a nightly email.
+      Mentioning other approaches as options the user might weigh is fine.
+  - type: tool_used
+    name: read-distinctions
+    tool: Read
+    input_match: briefing-distinctions
+    arm: with-only

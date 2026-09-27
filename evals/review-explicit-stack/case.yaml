@@ -1,0 +1,41 @@
+schema_version: "1.0"
+name: review-explicit-stack
+description: Asked-for review of a small app brief that dictates its infrastructure. The only reason given is generic, and nothing says what the app is for.
+tags: [review, explicit]
+execution:
+  prompt: "/intent:briefing-review Build a todos app in Java. Store all the todos in DynamoDB for fast and scalable retrieval, and use SNS for notifications."
+  max_turns: 10
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: names-the-pattern
+    criteria: >-
+      The brief asked for a Java todos app with the todos in DynamoDB "for fast and scalable
+      retrieval" and notifications through SNS. The response says in words that the brief
+      dictates the stack without saying what the app is for or who uses it. Asking clarifying
+      questions is not enough on its own. FAIL if the response only asks questions without
+      saying anything about how the request was briefed.
+  - type: llm
+    name: asks-what-the-app-is-for
+    criteria: >-
+      The response asks what the app is for, who will use it, or at what scale, rather than
+      assuming. Laying out both possibilities as conditions is fine. FAIL if it assumes the app
+      is a demo or a production system and argues from that assumption.
+  - type: llm
+    name: says-what-a-better-brief-gets
+    criteria: >-
+      The response tells the user what they would gain from briefing differently. For example,
+      knowing the purpose and the load would let the agent judge whether DynamoDB and SNS fit,
+      suggest something cheaper or simpler, or build around the user's reasons if the stack is
+      deliberate.
+  - type: llm
+    name: no-verdict-on-the-plan
+    criteria: >-
+      The response does not write code or a schema. It does not recommend for or against Java,
+      DynamoDB or SNS. Mentioning cost or other options, as examples of what the agent could
+      weigh once it knows the purpose, is fine.
+  - type: tool_used
+    name: read-distinctions
+    tool: Read
+    input_match: briefing-distinctions
+    arm: with-only

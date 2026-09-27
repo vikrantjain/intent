@@ -14,6 +14,17 @@ folder of the user's notes. In `review-reason-found`, meeting minutes record wha
 for, and the review should find and credit that reason. In `review-explicit-nonsoftware`, the
 notes give no reason. There the review should name the gap and not invent a reason to fill it.
 
+Three cases dictate a solution and each tests a different distinction.
+`review-explicit-agents-mandate` mandates department AI agents over A2A. Its only reasons are
+that competitors are building agents and that answers should come quickly. The review should
+treat these as reasons to act, not as the problem the agents would solve.
+`review-explicit-architecture` fixes a whole architecture and asks only for the write-up. The
+review should name the room it closes off. `review-explicit-stack` dictates DynamoDB and SNS for
+a todos app and says nothing about what the app is for. The review should ask about its purpose
+rather than assume one. `review-explicit-solution-reasoned` is their control. It names a solution
+and states the problem and constraint behind it, so the review should credit the reasoning and
+claim no gap that is not there.
+
 `review-quiet-*` and `review-declined` resume a conversation already under way, and never ask for
 a review. They check that the review stays quiet for a small request, and for a long request that
 states its problem. They also check that it stays quiet after the user has said they already
@@ -41,7 +52,7 @@ Run it from the plugin root. Run it again with `--model opus` for the second tar
 Cases that invoke a skill directly also run without the plugin, and the report gives the
 difference. Cases that resume a conversation run with the plugin only.
 
-A full run at 3 runs per case cost about $4 on Sonnet and $4 to $6 on Opus. Both models together
+A full run at 3 runs per case cost about $6.50 on Sonnet and $10 on Opus. Both models together
 have hit the account's usage limit mid-run, and runs past the limit fail with an error instead of
 a score. Run the two models at different times, or filter with `--case` or `--tag`.
 

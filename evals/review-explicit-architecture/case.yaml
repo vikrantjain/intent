@@ -1,0 +1,44 @@
+schema_version: "1.0"
+name: review-explicit-architecture
+description: Asked-for review of a brief that fixes a whole architecture and asks only for the write-up, leaving no room to consider other approaches.
+tags: [review, explicit]
+execution:
+  prompt: "/intent:briefing-review Write a solution architecture doc for exposing our organisation's docs and knowledge to AI agents. Move all our docs into a vector store, build MCP servers on top of it, and expose the data to customers through MCP tools, so their AI agents can get answers from our docs easily."
+  max_turns: 10
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: names-the-pattern
+    criteria: >-
+      The brief asked for an architecture doc in which all the organisation's docs move into a
+      vector store, MCP servers sit on top, and customers' AI agents get answers through MCP
+      tools. The response says in words that the brief fixes the approach and asks only for it
+      to be written up. It may put this as the approach coming without the problem behind it, or
+      as other ways to meet the need being closed off. Either is enough. Asking clarifying
+      questions is not enough on its own. FAIL if the response only asks questions
+      without saying anything about how the request was briefed.
+  - type: llm
+    name: asks-for-the-problem
+    criteria: >-
+      The brief's only reason was that customers' agents could get answers from the docs easily.
+      The response asks what problem this solves, such as which customers need answers, what
+      they cannot get today, or what that costs. FAIL if it treats "answers easily" as a
+      sufficient problem statement.
+  - type: llm
+    name: says-what-a-better-brief-gets
+    criteria: >-
+      The response tells the user what they would gain from briefing differently. For example,
+      with the problem stated and room to propose alternatives, the agent could compare
+      approaches or push back before the design is written.
+  - type: llm
+    name: no-verdict-on-the-plan
+    criteria: >-
+      The response does not write the architecture doc. It does not recommend for or against a
+      vector store or MCP. It does not deliver a verdict that exposing the docs is unsafe.
+      Mentioning other approaches, as examples of what the agent could consider once it knows
+      the problem, is fine. Asking which docs may be shared with customers is fine.
+  - type: tool_used
+    name: read-distinctions
+    tool: Read
+    input_match: briefing-distinctions
+    arm: with-only
