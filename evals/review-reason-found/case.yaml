@@ -12,18 +12,22 @@ graders:
   - type: llm
     name: credits-the-recorded-reason
     criteria: >-
-      The response recognises that the committee minutes in notes/ already record the reason for
-      the survey: the committee must choose which three of six events to keep. It does not tell
-      the user that the brief named a survey without saying what it is for. It does not ask the
-      user why they want a survey or why the scale is 1 to 5.
+      The response recognises that the committee minutes in notes/ record the reason for the
+      survey: the committee must choose which three of six events to keep. It treats that reason
+      as known. It does not ask the user why they want a survey or why the scale is 1 to 5.
+      Saying that the brief itself left the reason out is fine, as long as the response credits
+      the minutes for it.
   - type: llm
     name: gaps-are-real
     criteria: >-
-      Every gap the response says the brief has is absent from both the brief and the minutes.
-      The minutes say what decision the survey feeds, why the scale is 1 to 5 and why it is due
-      now. An example of a real gap is how many responses the committee needs before it trusts
-      the ranking. Questions that only confirm something the minutes state do not count as
-      claimed gaps.
+      Every gap the response says the brief has is either absent from both the brief and the
+      minutes, or a mismatch between them. The minutes state that the 2027 venue budget is halved,
+      so on 20 October the committee picks three of its six events. They note that attendance
+      alone does not settle it, because some events draw the same small group every year and
+      others draw different members. Members rate each event 1 to 5 so the ratings rank the
+      events, and the scale matches the 2024 survey. The survey goes out by the end of September,
+      to leave two weeks to answer. Saying that the brief itself left these out is fine when the
+      response credits the minutes for them.
   - type: llm
     name: stays-in-the-domain
     criteria: >-

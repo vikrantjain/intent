@@ -98,8 +98,9 @@ To write down the problem before starting work, describe it to capture:
 ## Models
 
 The plugin works best on Opus. It is also tested on Sonnet at medium effort. There the review
-holds up, but capture is less reliable. It sometimes asks more before writing, and sometimes
-comments on how you phrased the request.
+does not search your records for the reasoning behind a request. It may ask for a reason you
+have already written down. Capture is also less reliable on Sonnet. It sometimes asks more
+before writing, and sometimes comments on how you phrased the request.
 
 ## Developing
 

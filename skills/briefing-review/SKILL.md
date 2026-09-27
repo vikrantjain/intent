@@ -17,7 +17,9 @@ differently.
 **Before you respond**, read `${CLAUDE_PLUGIN_ROOT}/reference/briefing-distinctions.md` and read
 the request against it. Then look for `intent.md` in the project root, or at the location the
 user specified for it, and read it if it exists. A request that departs from its Problem or
-Success is a change of intent, and that comes first in whatever you say.
+Success is a change of intent, and that comes first in whatever you say. Last, search the user's
+own records, wherever you can reach them, for the reasoning behind any approach the request
+names. Reasoning you find there counts as given.
 
 The user asked for this review, so give it, however small the request and however often they
 ask. They want to know how they briefed.
@@ -38,8 +40,7 @@ propose alternatives and push back. Point the user toward whichever of those the
 
 Do not build a case or list every flaw. Do not soften it into nothing either: a review that only
 asks questions has told the user nothing about how they work. A named solution is not itself a
-fault. Users are often right. What matters is whether the reasoning exists. Before you call it
-missing, look for it in the material you can see.
+fault. Users are often right. What matters is whether the reasoning exists.
 
 **Then ask what you need** to recover the real goal, a few questions at a time. When you could
 restate the problem in a form the user would accept, restate it and let them correct it.
