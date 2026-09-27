@@ -54,7 +54,17 @@ difference. Cases that resume a conversation run with the plugin only.
 
 A full run at 3 runs per case cost about $6.50 on Sonnet and $10 on Opus. Both models together
 have hit the account's usage limit mid-run, and runs past the limit fail with an error instead of
-a score. Run the two models at different times, or filter with `--case` or `--tag`.
+a score. Run the two models at different times, or filter with `--case` or `--tag`. `--case`
+takes one glob, such as `'review-explicit-*'`. Given twice, it keeps only the last.
+
+## Reading results
+
+A grader's result gives the judge's votes, not its reasoning. To see why a case failed, rerun it
+with `--keep-temp`. The results JSON then gives each run's `tracePath`, and the reply is in the
+trace's assistant text.
+
+The judge sees only the final reply. It does not see the brief or the user's files. A criterion
+must state the facts it judges against, or the judge guesses them and can fail a correct reply.
 
 ## Histories
 

@@ -13,6 +13,7 @@ The mismatch surfaces after the thing is built.
 whether a problem was stated or only an approach, whether your constraints are real or
 preferences, whether success is defined, and whether anything was left for the agent to decide.
 If the work already has an `intent.md`, it also checks whether your request departs from it.
+Naming an approach is not a fault in itself. A brief that gives its reasons gets credit for them.
 It tells you plainly and politely what a different briefing would get you. Then it asks what it
 needs to reach the actual goal. It writes no files.
 
