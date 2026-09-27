@@ -83,7 +83,8 @@ A review opens along these lines:
 > gets read, I can say whether Postgres fits or suggest something better. If you have already
 > chosen it, tell me why.
 
-Then it asks a few questions to get to the real goal.
+Then it asks a few questions to get to the real goal. To end a review, say you have already
+thought it through. The review will not raise it again that session.
 
 Asking in plain words for feedback on how you framed a request can also start a review. The
 command is the reliable route.
