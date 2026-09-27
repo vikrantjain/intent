@@ -38,7 +38,8 @@ propose alternatives and push back. Point the user toward whichever of those the
 
 Do not build a case or list every flaw. Do not soften it into nothing either: a review that only
 asks questions has told the user nothing about how they work. A named solution is not itself a
-fault. Users are often right. What matters is whether the reasoning exists.
+fault. Users are often right. What matters is whether the reasoning exists. Before you call it
+missing, look for it in the material you can see.
 
 **Then ask what you need** to recover the real goal, a few questions at a time. When you could
 restate the problem in a form the user would accept, restate it and let them correct it.

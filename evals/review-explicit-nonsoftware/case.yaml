@@ -1,10 +1,12 @@
 schema_version: "1.0"
 name: review-explicit-nonsoftware
-description: Asked-for review of a solution-shaped brief outside software.
-tags: [review, explicit]
+description: Asked-for review of a solution-shaped brief outside software. The user's notes give no reason for it. Needs --scaffold.
+tags: [review, explicit, material]
+context:
+  scaffold_script: scaffold.sh
 execution:
   prompt: "/intent:briefing-review Send a survey to all our members asking them to rate our events from 1 to 5, and have it out by next week."
-  max_turns: 8
+  max_turns: 10
   allowed_tools: [Read, Glob, Grep, Skill]
 graders:
   - type: llm
@@ -27,3 +29,9 @@ graders:
       The response does not draft the survey or its questions. It does not recommend for or
       against the 1-to-5 survey. Mentioning other approaches, as examples of what a clearer goal
       would let the agent consider, is fine.
+  - type: llm
+    name: no-invented-reason
+    criteria: >-
+      The response does not state, as a fact about this organisation, what the survey is for or
+      what decision it feeds. The notes say neither. Offering possible purposes as questions for
+      the user is fine.

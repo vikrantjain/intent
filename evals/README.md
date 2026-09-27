@@ -9,6 +9,11 @@ Cases for `claude plugin eval`. Each case directory holds a `case.yaml`. Some al
 names what the brief did and what a different brief would get. They also check that it does not
 judge the plan, and that it does not invent faults in a brief that is already problem-framed.
 
+`review-reason-found` and `review-explicit-nonsoftware` give the same brief, a member survey, in a
+folder of the user's notes. In `review-reason-found`, meeting minutes record what the survey is
+for, and the review should find and credit that reason. In `review-explicit-nonsoftware`, the
+notes give no reason. There the review should name the gap and not invent a reason to fill it.
+
 `review-quiet-*` and `review-declined` resume a conversation already under way, and never ask for
 a review. They check that the review stays quiet for a small request, and for a long request that
 states its problem. They also check that it stays quiet after the user has said they already
@@ -29,7 +34,8 @@ Run it from the plugin root. Run it again with `--model opus` for the second tar
   file cannot set effort, so it comes from the shell.
 - **`--judge-model sonnet`**: the default judge is Haiku. The eval authoring guide recommends a
   Sonnet-tier judge for criteria like these, and every recorded run used one.
-- **`--scaffold`**: two cases start from an existing `intent.md`, which their `scaffold.sh` writes.
+- **`--scaffold`**: some cases start from files that their `scaffold.sh` writes: an existing
+  `intent.md`, or the user's notes.
 - **`--allow-tools Write Edit`**: capture writes `intent.md`.
 
 Cases that invoke a skill directly also run without the plugin, and the report gives the

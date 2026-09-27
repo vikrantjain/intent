@@ -1,0 +1,43 @@
+schema_version: "1.0"
+name: review-reason-found
+description: Asked-for review of a solution-shaped brief outside software, whose reason the user's notes already record. Needs --scaffold.
+tags: [review, explicit, material]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: "/intent:briefing-review Send a survey to all our members asking them to rate our events from 1 to 5, and have it out by next week."
+  max_turns: 10
+  allowed_tools: [Read, Glob, Grep, Skill]
+graders:
+  - type: llm
+    name: credits-the-recorded-reason
+    criteria: >-
+      The response recognises that the committee minutes in notes/ already record the reason for
+      the survey: the committee must choose which three of six events to keep. It does not tell
+      the user that the brief named a survey without saying what it is for. It does not ask the
+      user why they want a survey or why the scale is 1 to 5.
+  - type: llm
+    name: gaps-are-real
+    criteria: >-
+      Every gap the response says the brief has is absent from both the brief and the minutes.
+      The minutes say what decision the survey feeds, why the scale is 1 to 5 and why it is due
+      now. An example of a real gap is how many responses the committee needs before it trusts
+      the ranking. Questions that only confirm something the minutes state do not count as
+      claimed gaps.
+  - type: llm
+    name: stays-in-the-domain
+    criteria: >-
+      The response treats this as a question about what the user's organisation wants to learn
+      from its members. Mentioning how a survey might be delivered, such as a form or an email, is
+      fine. FAIL only if the response turns the request into a technical problem about software,
+      databases or code.
+  - type: llm
+    name: no-verdict-on-the-plan
+    criteria: >-
+      The response does not draft the survey or its questions. It does not recommend for or
+      against the 1-to-5 survey. Mentioning other approaches, as examples of what the agent could
+      consider, is fine.
+  - type: tool_used
+    name: read-the-minutes
+    tool: Read
+    input_match: minutes-2026-09
