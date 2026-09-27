@@ -7,6 +7,9 @@ That leaves the agent no room to offer a better approach. The usual symptom is a
 is really a solution to a problem nobody stated. "Add a cron job" and "use Postgres" are typical.
 The mismatch surfaces after the thing is built.
 
+The argument behind it is in
+[Your AI Agent Will Carry Out a Weak Plan Very Well](https://vikrantjain.dev/collaborate-with-your-ai-agent/).
+
 ## Skills
 
 **`briefing-review`** reviews how you briefed the agent, not what you asked for. It reads
