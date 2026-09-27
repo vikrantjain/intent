@@ -27,7 +27,9 @@ graders:
       others draw different members. Members rate each event 1 to 5 so the ratings rank the
       events, and the scale matches the 2024 survey. The survey goes out by the end of September,
       to leave two weeks to answer. Saying that the brief itself left these out is fine when the
-      response credits the minutes for them.
+      response credits the minutes for them. Pointing out that the 1-to-5 ratings may not answer
+      the minutes' own concern about reach is fine. That is a tension within the minutes, not a
+      claimed gap.
   - type: llm
     name: stays-in-the-domain
     criteria: >-
