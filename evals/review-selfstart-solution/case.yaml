@@ -1,0 +1,27 @@
+schema_version: "1.0"
+name: review-selfstart-solution
+description: Mid-session, a long requirement that is all approach and no problem. The review should start unasked.
+tags: [review, self-start]
+context:
+  history_file: history.jsonl
+execution:
+  prompt: "Thanks. OK, here's what I want. Set up a nightly cron job at 2am that exports all member records from our CRM (HubSpot) to CSV, loads them into a Postgres table called members_snapshot, and emails me a summary with the row count and any records missing an email address. Keep 90 days of snapshots and drop older ones. Use Python for the export script and put credentials in environment variables. I want it running by Friday."
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill, Write, Edit]
+graders:
+  - type: tool_used
+    name: skill-fired
+    tool: Skill
+    input_match: briefing-review
+  - type: llm
+    name: names-the-pattern
+    criteria: >-
+      The request asked for a nightly cron job that exports HubSpot members to Postgres and emails a summary. It said how to do the work but not what problem it solves or
+      who uses the result. The response says in words that the request names an approach without
+      the problem behind it. FAIL if the response only asks questions without saying anything
+      about how the request was briefed.
+  - type: tool_used
+    name: did-not-start-building
+    tool: Write
+    min: 0
+    max: 0

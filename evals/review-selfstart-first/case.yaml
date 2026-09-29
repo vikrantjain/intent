@@ -1,0 +1,25 @@
+schema_version: "1.0"
+name: review-selfstart-first
+description: First message of a session dictates a stack and says nothing about what the app is for. The review should start unasked.
+tags: [review, self-start]
+execution:
+  prompt: "Build a todos app in Java. Store all the todos in DynamoDB for fast and scalable retrieval, and use SNS for notifications."
+  max_turns: 8
+  allowed_tools: [Read, Glob, Grep, Skill, Write, Edit]
+graders:
+  - type: tool_used
+    name: skill-fired
+    tool: Skill
+    input_match: briefing-review
+  - type: llm
+    name: names-the-pattern
+    criteria: >-
+      The request asked for a Java todos app on DynamoDB and SNS. It said how to do the work but not what problem it solves or
+      who uses the result. The response says in words that the request names an approach without
+      the problem behind it. FAIL if the response only asks questions without saying anything
+      about how the request was briefed.
+  - type: tool_used
+    name: did-not-start-building
+    tool: Write
+    min: 0
+    max: 0

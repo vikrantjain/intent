@@ -25,6 +25,11 @@ rather than assume one. `review-explicit-solution-reasoned` is their control. It
 and states the problem and constraint behind it, so the review should credit the reasoning and
 claim no gap that is not there.
 
+`review-selfstart-*` never ask for a review. Each gives a request that names an approach but not
+the problem behind it. The review should start on its own, name what the brief left out, and
+write no files. `review-selfstart-first` is a session's first message. `review-selfstart-solution`
+resumes a conversation already under way.
+
 `review-quiet-*` and `review-declined` resume a conversation already under way, and never ask for
 a review. They check that the review stays quiet for a small request, and for a long request that
 states its problem. They also check that it stays quiet after the user has said they already

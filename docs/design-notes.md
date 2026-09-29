@@ -37,7 +37,8 @@ Anyone briefing an AI agent on non-trivial work, in any domain: software, writin
 
 ## Decisions
 - Review and capture are separate skills. They share a set of distinctions, and neither invokes the other.
-- Review runs only when the user asks for it. Starting on its own, with a one-sentence offer, was tried and dropped. In evals it triggered in none of 11 runs across Sonnet and Opus. Given a long requirement and write access, the agent built what was asked. Its description no longer claims it.
+- Review runs when the user asks for it, and also starts on its own when a request names an approach but not the problem behind it. A trigger clause in the skill's description was tried first. In evals it triggered in none of 11 runs across Sonnet and Opus. Given a long requirement and write access, the agent built what was asked.
+- A `SessionStart` hook now carries the trigger. It adds one instruction to the agent's context at session start. The hook only says when to invoke the review. What the review says stays in the skill. On Opus, the review started on a session's first message in 2 of 3 runs, against 0 of 3 without the plugin. Mid-session it started in 0 of 3 runs. Whether the hook reaches a resumed eval session is still unchecked. It stayed quiet in all 9 runs where it should not start. Sonnet is untested.
 - When an agreed `intent.md` exists, review reads the request against it. A request that departs from its Problem or Success is a change of intent, and review says so first.
 - Capture changes the Problem or Success of an existing `intent.md` only after saying what the change affects and getting the user's agreement.
 - `intent.md` has six sections, set in `reference/intent-template.md`. This document's "Who it is for" folds into Problem. Its "What the plugin provides" is left out because it describes a solution.

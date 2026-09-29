@@ -74,7 +74,11 @@ If the commands do not appear after installing, run `/reload-plugins`.
 
 ## Usage
 
-Both skills run only when you ask for them. To review a brief, pass it as the argument:
+The review also starts on its own when a request names an approach but not the problem behind
+it. This is new and still being tuned. It is most reliable at the start of a session. Mid-session
+it often does not start.
+
+To ask for a review, pass the brief as the argument:
 
 ```
 /intent:briefing-review Use Postgres for our event data and set up the schema.
@@ -113,6 +117,7 @@ skills/briefing-review/SKILL.md      the review
 skills/capture/SKILL.md              capture
 reference/briefing-distinctions.md   the four distinctions both skills work from
 reference/intent-template.md         the fixed shape of intent.md
+hooks/session-start.md               the instruction that starts the review unasked
 docs/design-notes.md                 the problem the plugin solves, and the decisions behind it
 evals/                               eval suite for claude plugin eval (see evals/README.md)
 ```
