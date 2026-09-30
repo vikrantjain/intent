@@ -75,8 +75,13 @@ If the commands do not appear after installing, run `/reload-plugins`.
 ## Usage
 
 The review also starts on its own when a request names an approach but not the problem behind
-it. This is new and still being tuned. It is most reliable at the start of a session. Mid-session
-it often does not start.
+it. The agent is asked to check at three points: the start of a session, a prompt sent in plan
+mode, and the first file write after each prompt. At that first write, the plugin refuses the
+write once and gives the check as the reason. You will see one refused write per prompt. If the
+brief states its problem, the agent writes again and carries on. This is new and still being
+tuned. In tests on Opus, the review started on a session's first message every time, and
+mid-session in 2 of 6 runs. The check at session start is missed if you install or update the
+plugin mid-session. Run `/clear` or start a new session to get it.
 
 To ask for a review, pass the brief as the argument:
 
@@ -117,7 +122,9 @@ skills/briefing-review/SKILL.md      the review
 skills/capture/SKILL.md              capture
 reference/briefing-distinctions.md   the four distinctions both skills work from
 reference/intent-template.md         the fixed shape of intent.md
-hooks/session-start.md               the instruction that starts the review unasked
+hooks/trigger.md                     the instruction that starts the review unasked
+hooks/hooks.json                     when it is given: session start, plan mode, first write
+hooks/first-write.sh                 refuses the first writes after each prompt, once
 docs/design-notes.md                 the problem the plugin solves, and the decisions behind it
 evals/                               eval suite for claude plugin eval (see evals/README.md)
 ```

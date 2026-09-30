@@ -3,7 +3,9 @@
   "cases": {
     "review-quiet-small": "members",
     "review-quiet-problem-framed": "members",
-    "review-declined": "declined"
+    "review-declined": "declined",
+    "review-selfstart-solution": "members",
+    "review-quiet-write": "members"
   },
   "histories": {
     "members": [

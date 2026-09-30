@@ -28,12 +28,17 @@ claim no gap that is not there.
 `review-selfstart-*` never ask for a review. Each gives a request that names an approach but not
 the problem behind it. The review should start on its own, name what the brief left out, and
 write no files. `review-selfstart-first` is a session's first message. `review-selfstart-solution`
-resumes a conversation already under way.
+resumes a conversation already under way. The plugin's hook denies the first writes after each
+prompt, and a denied Write still counts as a call. So these cases check that the working directory
+is unchanged, not that Write was never called.
 
 `review-quiet-*` and `review-declined` resume a conversation already under way, and never ask for
 a review. They check that the review stays quiet for a small request, and for a long request that
 states its problem. They also check that it stays quiet after the user has said they already
-thought it through.
+thought it through. `review-quiet-write` asks for a small file write. The hook denies the first
+write, and the agent should write again without a review.
+
+The hook's plan-mode trigger has no case, because a case cannot start in plan mode.
 
 `capture-*` check that capture asks before writing when there is nothing to write, and that it
 writes the fixed sections with no solution in them. They also check that it will not change the
