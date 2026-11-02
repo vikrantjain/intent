@@ -42,7 +42,10 @@ The hook's plan-mode trigger has no case, because a case cannot start in plan mo
 
 `capture-*` check that capture asks before writing when there is nothing to write, and that it
 writes the fixed sections with no solution in them. They also check that it will not change the
-Problem of an existing `intent.md` without agreement.
+Problem of an existing `intent.md` without agreement. `capture-existing-work` writes from status
+notes on work already under way. The notes give progress and open issues, and list postponed work
+under "Out of scope for now" beside one item that really is out of scope. The intent should hold
+none of the work's state, put no postponed work under Out of scope, and keep the real exclusion.
 
 ## Running
 
