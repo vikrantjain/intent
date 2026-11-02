@@ -26,8 +26,8 @@ graders:
       about one in five members do not renew at renewal time, which cost about £18k in dues last
       year, and that most lapses are members who forget, or who give up at the login step when
       renewing. The Problem section describes members not renewing, and gives at least one of
-      those causes. It does not present reminder emails, a renew link or a lapse report as the
-      problem.
+      those causes. The problem is the members lapsing, not a missing tool or feature. Mentioning
+      what was built is judged elsewhere, and does not fail this.
   - type: llm
     name: success-not-invented
     focus: {source: file, path: intent.md}
@@ -69,7 +69,7 @@ graders:
   - type: llm
     name: marks-inference
     criteria: >-
-      The project files the draft was written from never state the problem. The response makes
-      clear that parts of the draft are the agent's own reading, for example by saying the problem
-      or goal was inferred, or by naming the judgement calls or assumptions it rests on. It asks
-      the user to confirm or correct the draft.
+      The response tells the user where the draft is its own reading or guess rather than
+      something the files say outright, for example by saying a part was inferred or guessed, or
+      by listing the judgement calls or assumptions it rests on. It asks the user to confirm or
+      correct the draft.

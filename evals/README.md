@@ -69,10 +69,11 @@ Run it from the plugin root. Run it again with `--model opus` for the second tar
 Cases that invoke a skill directly also run without the plugin, and the report gives the
 difference. Cases that resume a conversation run with the plugin only.
 
-A full run at 3 runs per case cost about $6.50 on Sonnet and $10 on Opus. Both models together
-have hit the account's usage limit mid-run, and runs past the limit fail with an error instead of
-a score. Run the two models at different times, or filter with `--case` or `--tag`. `--case`
-takes one glob, such as `'review-explicit-*'`. Given twice, it keeps only the last.
+A full run at 3 runs per case cost about $6.50 on Sonnet and $10 on Opus, before the two capture-
+from-work cases were added. They add roughly $1.50 on Sonnet and $2.50 on Opus. Both models
+together have hit the account's usage limit mid-run, and runs past the limit fail with an error
+instead of a score. Run the two models at different times, or filter with `--case` or `--tag`.
+`--case` takes one glob, such as `'review-explicit-*'`. Given twice, it keeps only the last.
 
 ## Reading results
 
@@ -82,6 +83,30 @@ trace's assistant text.
 
 The judge sees only the final reply. It does not see the brief or the user's files. A criterion
 must state the facts it judges against, or the judge guesses them and can fail a correct reply.
+Context in a criterion can read as a requirement. One that opened "the files never state the
+problem" failed replies that flagged their other guesses but not the problem.
+
+## Cases expected to score below 1
+
+`capture-existing-work` and `capture-unstated-problem` have capture read an intent out of work
+already done. That is a reading, and the user's review of the draft is the safeguard. The skill
+is not tuned to pass them in full, and their graders fall in two groups.
+
+The core graders check what that review depends on: the draft gets the substance right and says
+what it guessed. A drop in any of them is a regression. In `capture-existing-work` they are
+`postponed-not-out-of-scope`, `real-scope-kept` and `asks-for-agreement`. In
+`capture-unstated-problem` they are `problem-inferred`, `success-not-invented`, `scope-sorted` and
+`marks-inference`. The file and section checks are core in both.
+
+The others, `no-work-state`, `no-phasing` and `no-bug-carried`, track details of the work leaking
+into the intent. A reviewer sees these and fixes them, so failures there are expected. Judge a
+skill change by the core graders, and by these only if they clearly get worse.
+
+Recorded in November 2026 on Sonnet and Opus together. `capture-existing-work` passed every core
+grader in 6 of 6 runs, and every grader in 5. `capture-unstated-problem` passed every core grader
+in 9 of 10 runs. The miss was a reply that did not say what it had guessed. It passed every grader
+in none: all 10 runs turned the open cheque bug into a Success criterion, and 8 named what was
+built.
 
 ## Histories
 

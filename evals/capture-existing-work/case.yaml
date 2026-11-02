@@ -31,14 +31,20 @@ graders:
       work set out to fix are allowed, such as about a third of Saturday shifts being short. So
       is saying or asking how success will be measured.
   - type: llm
-    name: no-deferrals
+    name: postponed-not-out-of-scope
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The notes the document was written from list weekday shifts and shift swapping under "Out
+      of scope for now", as postponed. Neither appears under the document's Out of scope, and
+      weekday shifts are not excluded anywhere. They may be covered by the Problem or Success,
+      since the notes say weekday shifts have the same problem.
+  - type: llm
+    name: no-phasing
     focus: {source: file, path: intent.md}
     criteria: >-
       The notes the document was written from list three things as postponed: weekday shifts
-      after Christmas, shift swapping in a v2, and a fix for duplicate reminders.
-      The document mentions none of them as planned, postponed or out of scope, and has no
-      phases or versions. Weekday shifts are not excluded anywhere. They may be covered by the
-      Problem or Success, since the notes say weekday shifts have the same problem.
+      after Christmas, shift swapping in a v2, and a fix for duplicate reminders. The document
+      mentions none of them as planned or postponed anywhere, and has no phases or versions.
   - type: llm
     name: real-scope-kept
     focus: {source: file, path: intent.md}
