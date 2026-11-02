@@ -1,0 +1,75 @@
+schema_version: "1.0"
+name: capture-unstated-problem
+description: Capture from a project folder whose files never state the problem. The agent has to infer it from code, changelog and tickets, invent no success target, and say what it inferred. Needs --scaffold.
+tags: [capture]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: "/intent:capture This is the renewals project. We've been at it since spring and never wrote down what it's for. Everything is in this folder. Please write up the intent, and I'll correct whatever you get wrong."
+  max_turns: 15
+  timeout_seconds: 500
+  allowed_tools: [Read, Glob, Grep, Skill, Write, Edit]
+graders:
+  - type: file_exists
+    name: intent-written
+    path: intent.md
+  - type: regex
+    name: sections-in-order
+    target: {source: file, path: intent.md}
+    pattern: "^## Problem\\b[\\s\\S]*^## Why it matters\\b[\\s\\S]*^## Success\\b[\\s\\S]*^## Constraints\\b[\\s\\S]*^## Out of scope\\b[\\s\\S]*^## Open questions\\b"
+    flags: m
+  - type: llm
+    name: problem-inferred
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The project files the document was written from never state the problem. They show that
+      about one in five members do not renew at renewal time, which cost about £18k in dues last
+      year, and that most lapses are members who forget, or who give up at the login step when
+      renewing. The Problem section describes members not renewing, and gives at least one of
+      those causes. It does not present reminder emails, a renew link or a lapse report as the
+      problem.
+  - type: llm
+    name: success-not-invented
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The project files the document was written from state no success target. The document gives
+      no number, percentage, deadline or threshold for success to reach. The £18k and one-in-five
+      figures are a cost and a baseline, and may appear as such. Describing success as fewer
+      members lapsing than now is not a target, and is allowed. The document says, in Success or
+      under Open questions, that a success measure or target has not been set or confirmed.
+  - type: llm
+    name: no-work-state
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The project files the document was written from describe a membership renewal problem and
+      the work done on it. The document does not describe that work or its state. It does not
+      name reminder emails or their timing, a renew link, a lapse report or version numbers, and
+      does not mention SMS anywhere. Allowed: giving up at the login step as a cause of the
+      problem, counting lapsed members as a way to measure success, and facts about the
+      membership export under Constraints.
+  - type: llm
+    name: no-bug-carried
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The project files the document was written from have one open bug: members who renewed by
+      cheque still get reminders, because cheque payments reach the membership export late. The
+      document does not carry that bug over in any form. A success criterion or open question
+      saying that members who have already renewed are not reminded, or are recognised before
+      their cheque is banked, carries it over, because it exists only because reminders were
+      built. Stating under Constraints that cheque payments reach the export late is allowed.
+  - type: llm
+    name: scope-sorted
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      In the project files the document was written from, recruiting new members was decided
+      against, and whether to chase members who lapsed recently is undecided by the board.
+      Recruiting new members appears under Out of scope. Chasing recently lapsed members appears
+      under Open questions as undecided. It is not under Out of scope, and not stated as part of
+      the Problem or Success.
+  - type: llm
+    name: marks-inference
+    criteria: >-
+      The project files the draft was written from never state the problem. The response makes
+      clear that parts of the draft are the agent's own reading, for example by saying the problem
+      or goal was inferred, or by naming the judgement calls or assumptions it rests on. It asks
+      the user to confirm or correct the draft.

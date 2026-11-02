@@ -46,6 +46,10 @@ Problem of an existing `intent.md` without agreement. `capture-existing-work` wr
 notes on work already under way. The notes give progress and open issues, and list postponed work
 under "Out of scope for now" beside one item that really is out of scope. The intent should hold
 none of the work's state, put no postponed work under Out of scope, and keep the real exclusion.
+`capture-unstated-problem` writes from a project folder of code, changelog and tickets that never
+states the problem. Capture should infer it, invent no success target, carry over neither what
+was built nor the open bug, keep a declined item apart from an undecided one, and tell the user
+what it inferred.
 
 ## Running
 
