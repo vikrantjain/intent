@@ -69,8 +69,8 @@ Run it from the plugin root. Run it again with `--model opus` for the second tar
 Cases that invoke a skill directly also run without the plugin, and the report gives the
 difference. Cases that resume a conversation run with the plugin only.
 
-A full run at 3 runs per case cost about $6.50 on Sonnet and $10 on Opus, before the two capture-
-from-work cases were added. They add roughly $1.50 on Sonnet and $2.50 on Opus. Both models
+A full run at 3 runs per case cost about $6.50 on Sonnet and $10 on Opus, before the two
+capture-from-work cases were added. They add roughly $1.50 on Sonnet and $2.50 on Opus. Both models
 together have hit the account's usage limit mid-run, and runs past the limit fail with an error
 instead of a score. Run the two models at different times, or filter with `--case` or `--tag`.
 `--case` takes one glob, such as `'review-explicit-*'`. Given twice, it keeps only the last.
