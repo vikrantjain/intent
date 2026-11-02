@@ -1,0 +1,56 @@
+schema_version: "1.0"
+name: capture-existing-work
+description: Capture from notes on work already under way, with known issues, deferred work and one item truly out of scope. The intent should hold none of the work's state, and no deferral under Out of scope. Needs --scaffold.
+tags: [capture]
+context:
+  scaffold_script: scaffold.sh
+execution:
+  prompt: "/intent:capture We're two months into the Saturday shift project and never wrote down what it's for. Everything is in notes/status.md. Please write up the intent from it."
+  max_turns: 10
+  timeout_seconds: 400
+  allowed_tools: [Read, Glob, Grep, Skill, Write, Edit]
+graders:
+  - type: file_exists
+    name: intent-written
+    path: intent.md
+  - type: regex
+    name: sections-in-order
+    target: {source: file, path: intent.md}
+    pattern: "^## Problem\\b[\\s\\S]*^## Why it matters\\b[\\s\\S]*^## Success\\b[\\s\\S]*^## Constraints\\b[\\s\\S]*^## Out of scope\\b[\\s\\S]*^## Open questions\\b"
+    flags: m
+  - type: llm
+    name: no-work-state
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The notes the document was written from describe a food bank's volunteer shift problem and
+      the work done on it so far. The document does not describe that work or its state. It does
+      not name the text reminders, DROP replies or coordinator alerts that were built. It mentions
+      none of the known issues: reminders sent twice, a reminder going out an hour late after the
+      clock change, an alert list that does not update until reloaded. It gives no progress
+      figure, such as 81% of Saturday shifts staffed since launch. Facts about the situation the
+      work set out to fix are allowed, such as about a third of Saturday shifts being short. So
+      is saying or asking how success will be measured.
+  - type: llm
+    name: postponed-not-out-of-scope
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The notes the document was written from list weekday shifts and shift swapping under "Out
+      of scope for now", as postponed. Neither appears under the document's Out of scope, and
+      weekday shifts are not excluded anywhere. They may be covered by the Problem or Success,
+      since the notes say weekday shifts have the same problem.
+  - type: llm
+    name: no-phasing
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      The notes the document was written from list three things as postponed: weekday shifts
+      after Christmas, shift swapping in a v2, and a fix for duplicate reminders. The document
+      mentions none of them as planned or postponed anywhere, and has no phases or versions.
+  - type: llm
+    name: real-scope-kept
+    focus: {source: file, path: intent.md}
+    criteria: >-
+      Recruiting new volunteers appears under Out of scope.
+  - type: llm
+    name: asks-for-agreement
+    criteria: >-
+      The response asks the user to confirm or correct what was written.

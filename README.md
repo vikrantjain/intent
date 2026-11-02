@@ -20,13 +20,14 @@ Naming an approach is not a fault in itself. A brief that gives its reasons gets
 It tells you plainly and politely what a different briefing would get you. Then it asks what it
 needs to reach the actual goal. It writes no files.
 
-**`capture`** writes or updates `intent.md`, in the project root or at a location you specify.
-The file states the problem, why it matters, what success means, the real constraints, what is
-out of scope and what is unresolved. It has the same six sections every time. It runs to about
-400 words, so it reads in two minutes. It holds what and why, never how. Capture asks only what
-it needs for a draft, and puts the rest under Open questions. It shows you the draft and asks you
-to confirm it. It will not change the problem or success of an existing `intent.md` until you
-agree.
+**`capture`** writes or updates `intent.md`, in the project root or at a location you specify. The
+file states the problem, why it matters, what success means, the real constraints, what is out of
+scope and what is unresolved. It has the same six sections every time. It runs to about 400 words,
+so it reads in two minutes. It holds what and why, never how. Given work already under way, it
+leaves out what is done, broken or postponed. Postponed work is not out of scope: only its timing
+is left to the plan. Capture asks only what it needs for a draft, and puts the rest under Open
+questions. It shows you the draft and asks you to confirm it. It will not change the problem or
+success of an existing `intent.md` until you agree.
 
 The skills work together. You brief the agent, and the review shows what the brief left out. Once
 the problem is settled, the review offers to capture it. Either skill also runs on its own.

@@ -40,3 +40,8 @@ afterwards, which only works while it stays that short.
 It holds **what and why, never how**: no architecture, task list, timeline or tools, except a
 constraint the user has called fixed. It is not a spec or a plan. The pressure to grow it will
 come from the user, and from you. Resist it. Whatever does not fit belongs in the next document.
+
+Work already under way is how too. What has been done, what is broken, what is postponed and how
+far it has got all stay out. What postponed work is for stays in: putting it off changes when,
+not what. Write what the work is for, as it could have been written before the work began, with
+what has since been learned about the problem.
