@@ -16,6 +16,12 @@ graders:
   - type: llm
     name: gaps-are-real
     criteria: >-
-      Every gap the response says the brief has is genuinely absent from the brief. An example of
-      a real gap is how the product team's trust would be judged. Questions that only confirm
-      something the brief stated do not count as claimed gaps.
+      The brief, in full: "Our support team spends about two hours a day tagging tickets by hand,
+      and two agents often tag the same kind of ticket differently. That makes the weekly report on
+      top complaint categories unreliable, and the product team plans from it. I want a weekly
+      report the product team trusts, with tagging taking under 20 minutes a day. We're on Zendesk
+      and can't switch this year. I'm open to any approach. What would you suggest?" Every gap the
+      response says the brief has is genuinely absent from it. An example of a real gap is how the
+      product team's trust would be judged. A question is not a claimed gap, even when it asks about
+      something the brief stated. Nor is a summary of what the brief said. Only a statement that the
+      brief lacks something counts as one.

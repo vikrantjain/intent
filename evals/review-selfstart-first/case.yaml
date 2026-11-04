@@ -14,10 +14,10 @@ graders:
   - type: llm
     name: names-the-pattern
     criteria: >-
-      The request asked for a Java todos app on DynamoDB and SNS. It said how to do the work but not what problem it solves or
-      who uses the result. The response says in words that the request names an approach without
-      the problem behind it. FAIL if the response only asks questions without saying anything
-      about how the request was briefed.
+      The request asked for a Java todos app on DynamoDB and SNS. It said how to do the work but not
+      what problem it solves or who uses the result. The response says in words that the request
+      names an approach without the problem behind it. FAIL if the response only asks questions
+      without saying anything about how the request was briefed.
   - type: regex
     name: did-not-start-building
     # The hook denies the first writes, and a denied Write still counts as a call. So this checks

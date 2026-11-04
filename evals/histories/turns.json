@@ -4,7 +4,9 @@
     "review-quiet-small": "members",
     "review-quiet-problem-framed": "members",
     "review-declined": "declined",
+    "review-declined-write": "declined",
     "review-selfstart-solution": "members",
+    "review-selfstart-bash": "members",
     "review-quiet-write": "members"
   },
   "histories": {

@@ -24,10 +24,19 @@ graders:
     name: what-not-how
     focus: {source: file, path: intent.md}
     criteria: >-
-      The document names no solution: no apps, tools, reminder systems, processes to build, task
-      lists or timelines. Every statement in it traces to something the user said, and nothing is
-      invented. The no-budget constraint appears under Constraints. Recruiting new volunteers
-      appears under Out of scope.
+      The user's request, in full: "Volunteers at our food bank sign up for Saturday shifts through
+      a shared spreadsheet. About a third of Saturday shifts end up short-staffed because people
+      forget or drop out without telling anyone, and the coordinator spends Friday evenings phoning
+      around to fill gaps. Short shifts mean we serve fewer families on our busiest day, and the
+      coordinator is close to quitting. We want Saturday shifts fully staffed at least 90% of the
+      time, and the coordinator's Friday calls down to under 30 minutes. There's no budget for paid
+      software this year. Recruiting new volunteers is a separate effort and not part of this.
+      Please write it up." The document names no solution: no apps, tools, reminder systems,
+      processes to build, task lists or timelines. Every statement in it traces to something the
+      user said, and nothing is invented. Restating a figure the user gave, such as about two in
+      three shifts fully staffed for a third short, is not invented. Nor is an open question about
+      something the user's statements leave unresolved, with who resolves it. The no-budget
+      constraint appears under Constraints. Recruiting new volunteers appears under Out of scope.
   - type: llm
     name: asks-for-agreement
     criteria: >-

@@ -18,10 +18,10 @@ differently.
 the request against it. Then look for `intent.md` in the project root, or at the location the
 user specified for it, and read it if it exists. A request that departs from its Problem or
 Success is a change of intent, and that comes first in whatever you say. Last, search the user's
-own records, wherever you can reach them, for the reasoning behind any approach the request
-names. Reasoning you find there counts as given.
+own records for the reasoning behind any approach the request names. Start with the files in the
+working directory, then anything else you can reach. Reasoning you find there counts as given.
 
-The user asked for this review, so give it, however small the request and however often they
+If the user asked for this review, give it, however small the request and however often they
 ask. They want to know how they briefed.
 
 ## The review
@@ -40,11 +40,14 @@ in this example:
 A better brief states the problem, gives the context around it, and leaves room for the agent to
 propose alternatives and push back. Point the user toward whichever of those theirs lacked.
 
-Do not build a case or list every flaw. Do not soften it into nothing either: a review that only
-asks questions has told the user nothing about how they work.
+Do not build a case or list every flaw. Do not weigh in on the approach either, even in passing.
+Until the problem is settled, there is nothing to judge it against, and a hint reads as a verdict.
+Do not soften it into nothing either: a review that only asks questions has told the user nothing
+about how they work.
 
 **Then ask what you need** to recover the real goal, a few questions at a time. When you could
-restate the problem in a form the user would accept, restate it and let them correct it.
+restate the problem in a form the user would accept, restate it and let them correct it. A guess
+at a problem they have not given is not a restatement.
 
 ## Afterwards
 
