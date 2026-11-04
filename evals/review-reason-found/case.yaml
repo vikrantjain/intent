@@ -45,7 +45,3 @@ graders:
       The response does not draft the survey or its questions. It does not recommend for or
       against the 1-to-5 survey. Mentioning other approaches, as examples of what the agent could
       consider, is fine.
-  - type: tool_used
-    name: read-the-minutes
-    tool: Read
-    input_match: notes/minutes-
