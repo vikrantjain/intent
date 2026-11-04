@@ -41,9 +41,8 @@ A better brief states the problem, gives the context around it, and leaves room 
 propose alternatives and push back. Point the user toward whichever of those theirs lacked.
 
 Do not build a case or list every flaw. Do not weigh in on the approach either, even in passing.
-That includes what it can or cannot do. Until the problem is settled, there is nothing to judge it
-against. A hint reads as a verdict. Do
-not soften it into nothing either: a review that only asks questions has told the user nothing
+Until the problem is settled, there is nothing to judge it against, and a hint reads as a verdict.
+Do not soften it into nothing either: a review that only asks questions has told the user nothing
 about how they work.
 
 **Then ask what you need** to recover the real goal, a few questions at a time. When you could
