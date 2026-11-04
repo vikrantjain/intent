@@ -29,10 +29,9 @@ graders:
       brief asks, to leave members at least two weeks to answer before that meeting. Saying that the
       brief itself left these out is fine when the response credits the minutes for them. Pointing
       out that the 1-to-5 ratings may not answer the minutes' own concern about reach is fine. That
-      is a tension within the minutes, not a claimed gap. A statement that something is missing is a
-      claimed gap. So is a question that asks for something the brief or the minutes already gave,
-      as though it had not been given. A question that confirms or probes something they stated is
-      not one.
+      is a tension within the minutes, not a claimed gap. A question is not a claimed gap either,
+      even when it asks about something the brief or the minutes stated. Only a statement that
+      something is missing counts as one.
   - type: llm
     name: stays-in-the-domain
     criteria: >-

@@ -93,9 +93,7 @@ The judge sees only the final reply. It does not see the brief or the user's fil
 must state the facts it judges against, or the judge guesses them and can fail a correct reply.
 Quote a brief in full rather than summarise it: the judge failed correct replies over a fact the
 summary had dropped. The judge also counts a clarifying question as a claimed gap unless the
-criterion says it is not one. Do not exempt every question, though. A question that confirms or
-probes something the brief stated is not a gap. One that asks for something the brief already
-gave, as though it had not been given, is: it shows the agent did not take in the brief.
+criterion says it is not one.
 Context in a criterion can read as a requirement. One that opened "the files never state the
 problem" failed replies that flagged their other guesses but not the problem.
 
