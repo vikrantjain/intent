@@ -1,13 +1,13 @@
 ---
 name: capture
-description: Creates or updates intent.md, a short statement of the problem being solved, why it matters and what success means. Use when the user wants the intent behind a piece of work written down before starting it, or agrees to record a problem statement the conversation has settled.
+description: Creates or updates intent.md, a short statement of the problem being solved, why it matters and what success means. Use when the user wants the intent behind a piece of work written down, or agrees to record a problem statement the conversation has settled.
 ---
 
 # Intent capture
 
 The subject is **the problem**, not the user. Get to a statement of what is being solved and why,
 and write it down. This is not a review. Ask your questions as part of the conversation, and
-never critique how the user asked.
+never critique how the user asked. Saying what their request leaves out is a critique too.
 
 Read `${CLAUDE_PLUGIN_ROOT}/reference/briefing-distinctions.md` and use it silently to see what
 is still missing.
@@ -23,14 +23,16 @@ at all. When the user asks for the document, write it.
 **Fill in `${CLAUDE_PLUGIN_ROOT}/reference/intent-template.md`** and write it as `intent.md` in
 the project root, or to a path the user gives. The text under each heading is guidance: replace
 it. Keep every section exactly as named, in order. Write "None." in an empty one rather than
-inventing content.
+inventing content. Every statement comes from what the user said or what their material shows.
+Do not add reasons, consequences or scope of your own to round a section out.
 
-**Show it and get the user's agreement.** Nothing downstream can be checked against a statement
-they never accepted.
+**Show it and get the user's agreement.** Point out anything you inferred rather than took from
+them. Nothing downstream can be checked against a statement they never accepted.
 
 **If an `intent.md` already exists**, confirm it is the right one and update it in place.
 Changing its Problem or Success changes what the work is for, and affects anything already
-checked against the old version. Say so, and make that change only once the user agrees.
+checked against the old version. Say so before you write anything, and make that change only
+once the user agrees.
 
 ## What this document is
 
@@ -42,6 +44,7 @@ constraint the user has called fixed. It is not a spec or a plan. The pressure t
 come from the user, and from you. Resist it. Whatever does not fit belongs in the next document.
 
 Work already under way is how too. What has been done, what is broken, what is postponed and how
-far it has got all stay out. What postponed work is for stays in: putting it off changes when,
-not what. Write what the work is for, as it could have been written before the work began, with
-what has since been learned about the problem.
+far it has got all stay out of every section, Open questions included. Describe the situation in
+its own terms, not through what was built for it. What postponed work is for stays in: putting it
+off changes when, not what. Write what the work is for, as it could have been written before the
+work began, with what has since been learned about the problem.

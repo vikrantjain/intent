@@ -11,11 +11,11 @@ graders:
     name: names-the-pattern
     criteria: >-
       The brief asked for an architecture doc in which all the organisation's docs move into a
-      vector store, MCP servers sit on top, and customers' AI agents get answers through MCP
-      tools. The response says in words that the brief fixes the approach and asks only for it
-      to be written up. It may put this as the approach coming without the problem behind it, or
-      as other ways to meet the need being closed off. Either is enough. Asking clarifying
-      questions is not enough on its own. FAIL if the response only asks questions
+      vector store, MCP servers sit on top, and customers' AI agents get answers through MCP tools.
+      The response says in words what the brief did, in either of two ways. It may say that the
+      brief hands over an approach without the problem behind it. Or it may say that the brief fixes
+      the approach and asks only for the write-up, closing off other ways to meet the need. Asking
+      clarifying questions is not enough on its own. FAIL if the response only asks questions
       without saying anything about how the request was briefed.
   - type: llm
     name: asks-for-the-problem

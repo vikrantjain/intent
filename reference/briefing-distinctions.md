@@ -13,7 +13,8 @@ Naming a solution is fine if the problem behind it is recoverable. If the user c
 when asked, establish it first: the solution was never checked against anything.
 
 A deliberate choice and a first idea read the same on the page. Asking why this approach tells
-them apart in one exchange.
+them apart in one exchange. A brief that already says why, or what it ruled out, has told them
+apart.
 
 ## Constraint vs. preference
 
@@ -37,7 +38,8 @@ This is the most useful thing to recover, because later work is checked against 
 
 A brief either invites the agent's judgment or forecloses it. Foreclosing is fine when the user
 has decided and wants execution. It goes wrong when it is accidental: the user would have
-welcomed a better approach and never signalled it.
+welcomed a better approach and never signalled it. Reasons given for the approach show it was
+not accidental.
 
 The test is whether following the request exactly leaves any point where the agent could propose
 something different.

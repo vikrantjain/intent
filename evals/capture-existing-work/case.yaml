@@ -34,10 +34,11 @@ graders:
     name: postponed-not-out-of-scope
     focus: {source: file, path: intent.md}
     criteria: >-
-      The notes the document was written from list weekday shifts and shift swapping under "Out
-      of scope for now", as postponed. Neither appears under the document's Out of scope, and
-      weekday shifts are not excluded anywhere. They may be covered by the Problem or Success,
-      since the notes say weekday shifts have the same problem.
+      Neither weekday shifts nor shift swapping appears under the document's Out of scope, and
+      weekday shifts are not excluded anywhere. The notes the document was written from listed both
+      under "Out of scope for now", but only as postponed, so they do not belong there. Weekday
+      shifts may be covered by the Problem or Success, since the notes say weekday shifts have the
+      same problem. Shift swapping need not appear at all.
   - type: llm
     name: no-phasing
     focus: {source: file, path: intent.md}

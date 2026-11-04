@@ -33,8 +33,8 @@ The skills work together. You brief the agent, and the review shows what the bri
 the problem is settled, the review offers to capture it. Either skill also runs on its own.
 
 The plugin does not check later work against `intent.md`. The file is there for you, and for any
-tool you point at it. Within the plugin, only the review reads it, to spot a request that departs
-from it.
+tool you point at it. Within the plugin, only the review checks a request against it, to spot one
+that departs from it.
 
 Both skills are domain-agnostic. Nothing here assumes software.
 
@@ -75,14 +75,16 @@ If the commands do not appear after installing, run `/reload-plugins`.
 
 ## Usage
 
-The review also starts on its own when a request names an approach but not the problem behind
-it. The agent is asked to check at three points: the start of a session, a prompt sent in plan
-mode, and the first file write after each prompt. At that first write, the plugin refuses the
-write once and gives the check as the reason. You will see one refused write per prompt. If the
-brief states its problem, the agent writes again and carries on. This is new and still being
-tuned. In tests on Opus, the review started on a session's first message every time, and
-mid-session in 2 of 6 runs. The check at session start is missed if you install or update the
-plugin mid-session. Run `/clear` or start a new session to get it.
+The review also starts on its own when a request names an approach but not the problem behind it.
+The agent is asked to check at three points: the start of a session, a prompt sent in plan mode, and
+the first file write after each prompt. At that first write, the plugin refuses the write once and
+gives the check as the reason. Writes sent along with it are refused once too. If the brief states
+its problem, the agent writes again and carries on. A shell command counts as a write when it
+plainly writes files, such as a redirect into a file or `mkdir`. This is new and still being tuned.
+In tests on Opus, the review started on a session's first message every time, and mid-session in 7
+of 9 runs. On Sonnet at medium effort, it started in 3 of 3 runs at each point. The check at session
+start is missed if you install or update the plugin mid-session. Run `/clear` or start a new session
+to get it.
 
 To ask for a review, pass the brief as the argument:
 
@@ -112,9 +114,8 @@ To write down the problem before starting work, describe it to capture:
 ## Models
 
 The plugin works best on Opus. It is also tested on Sonnet at medium effort. There the review
-does not search your records for the reasoning behind a request. It may ask for a reason you
-have already written down. Capture is also less reliable on Sonnet. It sometimes asks more
-before writing, and sometimes comments on how you phrased the request.
+searches your files for the reasoning behind a request, but may still ask for a reason you have
+already written down. It is also likelier to remark on what your approach cannot do.
 
 ## Developing
 
@@ -125,6 +126,7 @@ reference/briefing-distinctions.md   the four distinctions both skills work from
 reference/intent-template.md         the fixed shape of intent.md
 hooks/trigger.md                     the instruction that starts the review unasked
 hooks/hooks.json                     when it is given: session start, plan mode, first write
+hooks/plan-mode.sh                   gives it with each prompt sent in plan mode
 hooks/first-write.sh                 refuses the first writes after each prompt, once
 docs/design-notes.md                 the problem the plugin solves, and the decisions behind it
 evals/                               eval suite for claude plugin eval (see evals/README.md)
