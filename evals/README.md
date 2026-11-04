@@ -70,8 +70,9 @@ Run it from the plugin root. Run it again with `--model opus` for the second tar
 - **`--scaffold`**: some cases start from files that their `scaffold.sh` writes: an existing
   `intent.md`, or the user's notes.
 - **`--allow-tools Write Edit Bash`**: capture writes `intent.md`, and `review-selfstart-bash`
-  writes through the shell. A case gets only the tools its `allowed_tools` lists. Granting Bash
-  needs a shell sandbox that can start. Where none can, the runner refuses every run, so drop
+  writes through the shell. A case's `allowed_tools` does not keep a granted tool out: in
+  `review-reason-found`, which lists Read, Glob, Grep and Skill, the agent read the notes with
+  `cat`. Granting Bash needs a shell sandbox that can start. Where none can, the runner refuses every run, so drop
   `Bash` from the grant and leave out `review-selfstart-bash`.
 
 Cases that invoke a skill directly also run without the plugin, and the report gives the
@@ -96,6 +97,11 @@ summary had dropped. The judge also counts a clarifying question as a claimed ga
 criterion says it is not one.
 Context in a criterion can read as a requirement. One that opened "the files never state the
 problem" failed replies that flagged their other guesses but not the problem.
+
+A grader on which tool was used fails a run that reached the same result another way. One in
+`review-reason-found` required the minutes to be opened with `Read`, and failed 3 of 5 Opus runs
+that read them with `cat` and credited them. It was removed: `credits-the-recorded-reason`
+already fails a reply that missed the minutes.
 
 ## Cases expected to score below 1
 
