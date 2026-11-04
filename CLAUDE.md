@@ -30,15 +30,16 @@ skill would still run and simply work worse.
 ## The plugin is self-contained
 
 Sibling directories under `../` are unrelated plugins. Do not reference them from anything in
-this repo, and do not make a skill here depend on one. They may later be tuned to consume
-`intent.md`; that is their side of the boundary, not this one's. A path into a sibling resolves
-in this checkout and breaks when the plugin is installed on its own.
+this repo, and do not make a skill here depend on one. A path into a sibling resolves in this
+checkout and breaks when the plugin is installed on its own.
 
-## Shared reference files
+## Files loaded by path
 
 Both `skills/*/SKILL.md` load `reference/` files by `${CLAUDE_PLUGIN_ROOT}` path. A renamed or
 moved file breaks nothing visibly. The skill still loads, and the agent simply never reads the
-distinctions. Grep for the path before moving one.
+distinctions. The hook scripts read `hooks/trigger.md` from their own directory. Without it,
+every hook drops the instruction that starts the review unasked. Grep for the path before moving
+one.
 
 `reference/intent-template.md` is the fixed shape of the `intent.md` the plugin produces.
 Changing its sections changes the format other work is meant to check against.
